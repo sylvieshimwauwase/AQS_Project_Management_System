@@ -6,7 +6,7 @@ This Project Management Tool empowers managers to efficiently assign tasks, set 
 
 ## Features
 
-- Task Assignment 
+- Task Assignment
 - Progress Tracking
 - deadline reminders
 - Detailed reporting
@@ -15,4 +15,4 @@ This Project Management Tool empowers managers to efficiently assign tasks, set 
 ## Technologies Used
 
 - Front-end: React.js, Tailwind CSS
-- Back-end: PHP, Laravel Framework
+- Backend: PHP, Laravel Framework
