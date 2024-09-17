@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import groupImage from "../images/Group.png";
+import groupImage from "../images/Group.jfif";
 import Button from "../components/Button";
 import Google from "../images/Vector.png";
 import Facebook from "../images/Logo facebook.png";

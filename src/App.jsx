@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SplashPage from './assets/components/SplashPage';
 import Login from './assets/pages/Login';
@@ -8,8 +8,13 @@ import VerifyCode from './assets/pages/VerifyCode';
 import CreateNewPassword from './assets/pages/PasswordSetup';
 import Createemailemployee from './assets/pages/createemailemployee';
 import Addmember from './assets/pages/Addmember';
-
+import Navbar from './assets/components/Navbar';
+import Dashboard from './assets/pages/Dashboard';
+import Sidebar from './assets/components/sidebar';
+ 
 function App() {
+
+   const [sidebarToggle, setSidebarToggle] = useState(false) 
    return (
       <BrowserRouter>
          <Routes>
@@ -20,7 +25,10 @@ function App() {
             <Route path='/verifyCode' element={<VerifyCode />} />
             <Route path='/createNewPassword' element={<CreateNewPassword />} />
             <Route path='/createemailemployee' element={<Createemailemployee/>} />
-            <Route path='/Addmember' element={<Addmember/>} />
+            <Route path='/addmember' element={<Addmember/>} />
+            <Route path='/navbar' element={<Navbar/>} />
+            <Route path='/sidebar' element={<Sidebar/>} />
+            <Route path='/dashboard' element={<Dashboard/>} />
 
          </Routes>
       </BrowserRouter>

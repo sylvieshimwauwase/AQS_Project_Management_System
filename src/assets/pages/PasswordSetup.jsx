@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import groupImage from "../images/Group.png";
+import groupImage from "../images/Group.jfif";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { FaEye } from "react-icons/fa";

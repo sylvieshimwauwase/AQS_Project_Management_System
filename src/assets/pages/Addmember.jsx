@@ -1,186 +1,160 @@
-// import React, { useState } from "react";
-// import Button from "../components/Button";
-// import { FaEye, FaEyeSlash } from "react-icons/fa";
+import React, { useState } from "react";
+import addImage from "../images/addhim.jfif";
+import Btn from "../components/Btn";
 
-// function Addmember() {
-//   const [email, setEmail] = useState("");
-//   const [defaultPassword, setDefaultPassword] = useState("");
-//   const [fullName, setFullName] = useState("");
-//   const [department, setDepartment] = useState("");
-//   const [position, setPosition] = useState("");
-//   const [showPassword, setShowPassword] = useState(false);
-//   const [errors, setErrors] = useState({});
+function Addmember() {
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [department, setDepartment] = useState("");
+  const [position, setPosition] = useState("");
+  
+  const [errors, setErrors] = useState({});
 
-//   const handleValidation = () => {
-//     let errors = {};
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const handleValidation = () => {
+    let errors = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-//     if (!fullName.trim()) {
-//       errors["fullName"] = "Full name of the employee";
-//     }
+    if (!fullName.trim()) {
+      errors["fullName"] = "Full name cannot be empty";
+    }
 
-//     if (!nationality.trim()) {
-//       errors["nationality"] = "nationality of the employee";
-//     }
-//     if (!gender.trim()) {
-//       errors["gender"] = "gender of the employee";
-//     }
-//     if (!idnumber.trim()) {
-//       errors["idnumber"] = "Identification of the employee";
-//     }
+    if (!email) {
+      errors["email"] = "Email cannot be empty";
+    } else if (!emailRegex.test(email)) {
+      errors["email"] = "Email is not valid";
+    }
 
-//     if (!email) {
-//       errors["email"] = "Email cannot be empty";
-//     } else if (!emailRegex.test(email)) {
-//       errors["email"] = "Email is not valid";
-//     }
+    if (!defaultPassword) {
+      errors["defaultPassword"] = "Password cannot be empty";
+    } else if (defaultPassword.length < 8) {
+      errors["defaultPassword"] = "Password must be at least 8 characters";
+    }
 
-//     setErrors(errors);
-//     return Object.keys(errors).length === 0;
-//   };
+    if (!department.trim()) {
+      errors["department"] = "Department cannot be empty";
+    }
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (handleValidation()) {
-//       console.log("Email:", email);
-//       console.log("Password:", defaultPassword);
-//       console.log("Full Name:", fullName);
-//       console.log("Department:", department);
-//       console.log("Position:", position);
-//     }
-//   };
+    if (!position.trim()) {
+      errors["position"] = "Position cannot be empty";
+    }
 
-//   return (
-//     <div className="min-h-screen flex items-center justify-center py-10">
-//       <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl w-full">
-//         <div className="w-[50vw] bg-[#264667] flex flex-col items-center justify-center text-white px-8">
-//           <div className="mt-4 space-y-4 text-center"></div>
-//         </div>
-//         <h2 className="text-3xl font-bold text-gray-700 mb-6">
-//           Add a member to the team
-//         </h2>
-//         <h2 className="text-1xl font-bold text-gray-700 mb-2">
-//           Fields are mendatory
-//         </h2>
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
-//         <div className="w-[50vw] bg-white flex items-center justify-center h-full flex-col p-10 shadow-md rounded-lg">
-//           <div className="bg-white p-6 border border-gray-300 rounded-lg w-full max-w-md">
-//             <h2 className="text-3xl font-bold text-gray-700 mb-6">
-//               Choose a title
-//             </h2>
-//             <h2 className="text-1xl font-bold text-gray-500 mb-6">
-//               Profile picture
-//             </h2>
-//             <form className="space-y-6" onSubmit={handleSubmit}>
-//               <div>
-//                 <label
-//                   htmlFor="fullName"
-//                   className="text-sm font-medium text-gray-700"
-//                 >
-//                   Full Name
-//                 </label>
-//                 <input
-//                   type="text"
-//                   id="fullName"
-//                   name="fullName"
-//                   value={fullName}
-//                   placeholder="Input full name"
-//                   onChange={(e) => setFullName(e.target.value)}
-//                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-//                 />
-//                 {errors.fullName && (
-//                   <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
-//                 )}
-//               </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (handleValidation()) {
+      console.log("Email:", email);
+      console.log("Full Name:", fullName);
+      console.log("Department:", department);
+      console.log("Position:", position);
+    }
+  };
 
-//               <div>
-//                 <label
-//                   htmlFor="nationality"
-//                   className="text-sm font-medium text-gray-700"
-//                 >
-//                   Nationality
-//                 </label>
-//                 <select id="" name="country">
-//                   type="text" value={nationality}
-//                   onChange={(e) => setNationality(e.target.value)}
-//                 </select>
-//                 {errors.nationality && (
-//                   <p className="text-red-500 text-sm mt-1">
-//                     {errors.nationality}
-//                   </p>
-//                 )}
-//               </div>
+  return (
+    <div className="min-h-screen flex items-center justify-center py-10 ">
+     
+        <div className="w-[70vw] bg-white  h-full  p-20 shadow-2xl rounded-lg grid grid-cols-2 gap-3 md:gird-cols-2 ">
+        <div>
+        <h2 className="text-3xl font-bold text-[#264667] mr-50 mt-4 pt-0.5">
+              Add member to the team
+            </h2>
+            <h2 className="text-1xl font-bold text-gray-500 mr-50 mt-4 mb-10">
+              Fields are mendatory
+            </h2>
+            </div>
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div>
+               
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  value={fullName}
+                  placeholder="Input full name"
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.fullName && (
+                  <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+                )}
+              </div>
 
-//               <div>
-//                 <label
-//                   htmlFor="gender"
-//                   className="text-sm font-medium text-gray-700"
-//                 >
-//                   gender
-//                 </label>
-//                 <input
-//                   type="text"
-//                   id="gender"
-//                   name="gender"
-//                   value={gender}
-//                   placeholder="Input gender"
-//                   onChange={(e) => setGender(e.target.value)}
-//                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-//                 />
-//                 {errors.fullName && (
-//                   <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
-//                 )}
-//               </div>
+              <div>
+                
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  placeholder="Add the new email:example@aqs.org"
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
+              </div>
 
-//               <div>
-//                 <label
-//                   htmlFor="identification"
-//                   className="text-sm font-medium text-gray-700"
-//                 >
-//                   ID Number
-//                 </label>
-//                 <input
-//                   type="text"
-//                   id="idnumber"
-//                   name="idnumber"
-//                   value={fullName}
-//                   placeholder="Input your identification number"
-//                   onChange={(e) => setIdnumber(e.target.value)}
-//                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-//                 />
-//                 {errors.idnumber && (
-//                   <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
-//                 )}
-//               </div>
+              <div>
+            
+                <input
+                  type="text"
+                  id="department"
+                  name="department"
+                  value={department}
+                  placeholder="Department"
+                  onChange={(e) => setDepartment(e.target.value)}
+                  className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.department && (
+                  <p className="text-red-500 text-sm mt-1">{errors.department}</p>
+                )}
+              </div>
 
-//               <div>
-//                 <label
-//                   htmlFor="email"
-//                   className="text-sm font-medium text-gray-700"
-//                 >
-//                   Email
-//                 </label>
-//                 <input
-//                   type="email"
-//                   id="email"
-//                   name="email"
-//                   value={email}
-//                   placeholder="example@gmail.com"
-//                   onChange={(e) => setEmail(e.target.value)}
-//                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-//                 />
-//                 {errors.email && (
-//                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-//                 )}
-//               </div>
+              <div>
+               
+                <input
+                  type="text"
+                  id="position"
+                  name="position"
+                  value={position}
+                  placeholder="Position"
+                  onChange={(e) => setPosition(e.target.value)}
+                  className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.position && (
+                  <p className="text-red-500 text-sm mt-1">{errors.position}</p>
+                )}
+              </div>
 
-//               <Button text="Send" />
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+              
+              <div>
+                
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  placeholder="Add his current email:example@gmail.com"
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
+              </div>
+              <Btn text="Send an invite" />
+             
+            </form>
+            <div className="col-span-2">
+          <img src={addImage} alt="Add Image" className="max-h-60 mx-96  my-8 -mr-3" />
+        </div>
+        </div>
+      
+    </div>
+  );
+}
 
-// export default Addmember;
+export default Addmember;
