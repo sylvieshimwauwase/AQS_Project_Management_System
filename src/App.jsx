@@ -8,13 +8,12 @@ import VerifyCode from './assets/pages/VerifyCode';
 import CreateNewPassword from './assets/pages/PasswordSetup';
 import Createemailemployee from './assets/pages/createemailemployee';
 import Addmember from './assets/pages/Addmember';
-import Navbar from './assets/components/Navbar';
 import Dashboard from './assets/pages/Dashboard';
-import Sidebar from './assets/components/sidebar';
+
  
 function App() {
 
-   const [sidebarToggle, setSidebarToggle] = useState(false) 
+
    return (
       <BrowserRouter>
          <Routes>
