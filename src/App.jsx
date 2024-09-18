@@ -26,9 +26,10 @@ function App() {
             <Route path='/createNewPassword' element={<CreateNewPassword />} />
             <Route path='/createemailemployee' element={<Createemailemployee/>} />
             <Route path='/addmember' element={<Addmember/>} />
-            <Route path='/navbar' element={<Navbar/>} />
-            <Route path='/sidebar' element={<Sidebar/>} />
             <Route path='/dashboard' element={<Dashboard/>} />
+            
+
+            
 
          </Routes>
       </BrowserRouter>
