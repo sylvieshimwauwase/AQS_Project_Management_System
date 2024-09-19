@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaHome, FaPoll, FaRegEnvelope, FaRegFileAlt,  } from 'react-icons/fa'
+import { FaCalendar, FaHome, FaPoll, FaRegEnvelope, FaRegFileAlt, FaUsers,  } from 'react-icons/fa'
 import { FaPeopleGroup } from 'react-icons/fa6'
 
 function Sidebar() {
@@ -16,7 +16,7 @@ function Sidebar() {
 
                     <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
                 <a href='' className='px-3'>
-                    <FaHome className='inline-block w-6 h-6 mr-2 -mt-2'></FaHome></a>Employee</li>
+                    <FaUsers className='inline-block w-6 h-6 mr-2 -mt-2'></FaUsers></a>Employee</li>
 
                     <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
                 <a href='' className='px-3'>
@@ -29,7 +29,7 @@ function Sidebar() {
 
                     <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
                 <a href='' className='px-3'>
-                    <FaHome className='inline-block w-6 h-6 mr-2 -mt-2'></FaHome></a>Schedule</li>
+                    <FaCalendar className='inline-block w-6 h-6 mr-2 -mt-2'></FaCalendar></a>Schedule</li>
 
                     <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
                 <a href='' className='px-3'>
