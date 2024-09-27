@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sidebare.css';
-function Sidebare() {
+function EmployeeSidebare() {
   return (
     <div>
         <div class="sidebar">
@@ -46,4 +46,4 @@ function Sidebare() {
   )
 }
 
-export default Sidebare
+export default EmployeeSidebare

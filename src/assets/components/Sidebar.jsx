@@ -2,7 +2,7 @@ import React from 'react'
 import { FaCalendar, FaHome, FaPoll, FaRegEnvelope, FaRegFileAlt, FaUsers,  } from 'react-icons/fa'
 import { FaPeopleGroup } from 'react-icons/fa6'
 
-function Sidebar() {
+function EmployeeSidebar() {
   return (
     <div className='w-50 bg-[#264667] fixed h-full px-4 py-2'>
         <div className='my-2 mb-4'>
@@ -41,4 +41,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default EmployeeSidebar
