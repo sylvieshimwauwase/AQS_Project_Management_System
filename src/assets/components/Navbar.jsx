@@ -1,37 +1,55 @@
-import React from 'react'
-import { FaBars , FaBell, FaSearch, FaUserCircle} from 'react-icons/fa'
+import React, { useState } from 'react';
+import { FaBell, FaUserCircle } from 'react-icons/fa';
 
-function Navbar() {
+const Navbar = () => {
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
+  const toggleProfileMenu = () => {
+    setIsProfileMenuOpen(!isProfileMenuOpen);
+  };
+
   return (
-    <nav className='bg-gray-800 px-4 py-3 flex justify-between ml-64'>
-      <div className='flex items-center text-xl'>
-        <FaBars  className='text-white me-4 cursor-pointer'/>
-        <span className='text-white font-semibold'>Africa Quantitative Science</span>
-      </div>
-      <div className='flex items-center gap-x-5'>
-        <div className='relative md:w-65'>
-           <span className='relative md:absolute inset-y-0 left-0 flex items-center pl-2'>
-            <button className='p-1 focus:outline-none text-white md:text-black'><FaSearch /></button></span>
-           <input type='text' className='w-full px-4 py-1 pl-12 rounded shadow  outline-none hidden md:block'/>
-           </div>
+    <nav className="bg-white shadow-md p-4 flex justify-between items-center">
+      <h1 className="text-2xl font-bold text-[#264667]">Africa Quantitative Science</h1>
+      <div className="flex items-center space-x-6">
 
-           <div className='text-white'><FaBell className='w-6 h-6' /></div>
-           <div className='relative'>
-            <button className='text-white group'>
-                <FaUserCircle className='w-6 h-6 mt-1' />
+        <div></div>
 
-           <div className='z-10 hidden absolute bg-white rounded-lg shadow w-32 group-focus:block top-full right-0'>
-            
-            <ul className='py-2 text-sm text-gray-950'>
-            <li><a href=''>Profile</a></li>
-            <li><a href=''>Setting</a></li>
-            <li><a href=''>Log Out</a></li>
-            </ul>
+        <button className="relative">
+          <FaBell className="w-6 h-6 text-[#264667]" />
+          <span className="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full px-1">3</span>
+        </button>
+
+      
+        <div className="relative">
+          <div
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={toggleProfileMenu}
+          >
+            <FaUserCircle className="w-8 h-8 text-[#264667]" />
+            <span className="text-sm font-semibold text-[#264667]">Yvan</span>
+          </div>
+
+         
+          {isProfileMenuOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-20">
+              <ul className="py-1 text-sm text-gray-700">
+                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Profile
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Settings
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Logout
+                </li>
+              </ul>
             </div>
-           </button></div>
+          )}
+        </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

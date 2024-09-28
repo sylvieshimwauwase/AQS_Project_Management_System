@@ -1,44 +1,49 @@
-import React from 'react'
-import { FaCalendar, FaHome, FaPoll, FaRegEnvelope, FaRegFileAlt, FaUsers,  } from 'react-icons/fa'
-import { FaPeopleGroup } from 'react-icons/fa6'
+import React from 'react';
+import { FaCalendar, FaHome, FaPoll, FaRegEnvelope, FaRegFileAlt, FaUsers, FaBars } from 'react-icons/fa';
 
-function Sidebar() {
+
+function Sidebar({ isOpen, toggleSidebar }) {
   return (
-    <div className='w-50 bg-[#264667] fixed h-full px-4 py-2'>
-        <div className='my-2 mb-4'>
-            <h1 className='text-2x text-white font-bold'>HOD DASHBOARD</h1>
-        </div>
-        <hr />
-        <ul className='mt-3 text-white font-bold'>
-            <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
-                <a href='' className='px-3'>
-                    <FaHome className='inline-block w-6 h-6 mr-2 -mt-2'></FaHome></a>Dashboard</li>
+    <div className={`bg-[#264667] transition-all duration-300 ${isOpen ? 'w-64' : 'w-16'} h-full px-4 py-2 fixed`}>
+      <div className='logo-container'>
+      <img src="../assets/images/download.png" alt="AQS Logo" className="w-12 h-12" />
 
-                    <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
-                <a href='' className='px-3'>
-                    <FaUsers className='inline-block w-6 h-6 mr-2 -mt-2'></FaUsers></a>Employee</li>
-
-                    <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
-                <a href='' className='px-3'>
-                    <FaPoll className='inline-block w-6 h-6 mr-2 -mt-2'></FaPoll></a>Projects</li>
-
-
-                    <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
-                <a href='' className='px-3'>
-                    <FaRegEnvelope className='inline-block w-6 h-6 mr-2 -mt-2'></FaRegEnvelope></a>Messages</li>
-
-                    <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
-                <a href='' className='px-3'>
-                    <FaCalendar className='inline-block w-6 h-6 mr-2 -mt-2'></FaCalendar></a>Schedule</li>
-
-                    <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
-                <a href='' className='px-3'>
-                    <FaRegFileAlt className='inline-block w-6 h-6 mr-2 -mt-2'></FaRegFileAlt></a>Report</li>
-                    
-        </ul>
-      
+      </div>
+      <div className='my-4 flex justify-between items-center'>
+        <h1 className={`text-xl text-white font-semibold transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}>
+          HOD DASHBOARD
+        </h1>
+        <FaBars className="text-white cursor-pointer" onClick={toggleSidebar} />
+      </div>
+      <hr className="mb-4" />
+          <ul className={`space-y-4 text-white font-semibold   ${!isOpen ? 'flex flex-col items-center' : ''}`}>
+        <li className='flex items-center px-4 py-3 rounded-md hover:bg-blue-500 cursor-pointer'>
+          <FaHome className='w-6 h-6' />
+          {isOpen && <span className='ml-4'>Dashboard</span>}
+        </li>
+        <li className='flex items-center px-4 py-3 rounded-md hover:bg-blue-500 cursor-pointer'>
+          <FaUsers className='w-6 h-6' />
+          {isOpen && <span className='ml-4'>Employee</span>}
+        </li>
+        <li className='flex items-center px-4 py-3 rounded-md hover:bg-blue-500 cursor-pointer'>
+          <FaPoll className='w-6 h-6' />
+          {isOpen && <span className='ml-4'>Projects</span>}
+        </li>
+        <li className='flex items-center px-4 py-3 rounded-md hover:bg-blue-500 cursor-pointer'>
+          <FaRegEnvelope className='w-6 h-6' />
+          {isOpen && <span className='ml-4'>Messages</span>}
+        </li>
+        <li className='flex items-center px-4 py-3 rounded-md hover:bg-blue-500 cursor-pointer'>
+          <FaCalendar className='w-6 h-6' />
+          {isOpen && <span className='ml-4'>Schedule</span>}
+        </li>
+        <li className='flex items-center px-4 py-3 rounded-md hover:bg-blue-500 cursor-pointer'>
+          <FaRegFileAlt className='w-6 h-6' />
+          {isOpen && <span className='ml-4'>Report</span>}
+        </li>
+      </ul>
     </div>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

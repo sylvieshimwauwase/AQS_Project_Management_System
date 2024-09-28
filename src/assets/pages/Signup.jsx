@@ -6,7 +6,6 @@ import Facebook from "../images/Logo facebook.png";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 
-
 function Signup() {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
@@ -37,7 +36,7 @@ function Signup() {
       e.preventDefault();
       if (handleValidation()) {
          console.log("Email: ", email);
-         console.log("Password ", password);
+         console.log("Password: ", password);
       }
    };
 
@@ -45,17 +44,12 @@ function Signup() {
       <div className="min-h-screen flex items-center justify-center py-10">
          <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden max-w-6xl w-full">
             <div className="w-[50vw] bg-[#264667] flex flex-col items-center justify-center text-white px-8">
-               <img src={groupImage}
-                  alt=""
-                  className="filter brightness-75"
-               />
+               <img src={groupImage} alt="" className="filter brightness-75" />
                <div className="mt-4 space-y-4 text-center">
                   <p className="text-lg font-bold">
                      Welcome to Africa Quantitative Science
                   </p>
-                  <p>
-                     use your time well
-                  </p>
+                  <p>use your time well</p>
                </div>
             </div>
 
@@ -67,29 +61,30 @@ function Signup() {
                   <form className="mt-6" onSubmit={handleSubmit}>
                      <div className="relative space-y-4">
                         <div className="flex gap-4">
-                        <div>
-                           <label htmlFor="fname" className="text-sm font-medium text-gray-700">
-                              First Name
-                           </label>
-                           <input
-                              type="text"
-                              id="fname"
-                              name="fname"
-                              placeholder="Input first name"
-                              className="mt-1 block w-40 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"/>
-                        </div>
-                        <div>
-                           <label htmlFor="lname" className="text-sm font-medium text-gray-700">
-                              Last Name
-                           </label>
-                           <input
-                              type="text"
-                              id="lname"
-                              name="lname"
-                              placeholder="Input last name"
-                              className="mt-1 block w-40 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                           />
-                        </div>
+                           <div>
+                              <label htmlFor="fname" className="text-sm font-medium text-gray-700">
+                                 First Name
+                              </label>
+                              <input
+                                 type="text"
+                                 id="fname"
+                                 name="fname"
+                                 placeholder="Input first name"
+                                 className="mt-1 block w-40 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                              />
+                           </div>
+                           <div>
+                              <label htmlFor="lname" className="text-sm font-medium text-gray-700">
+                                 Last Name
+                              </label>
+                              <input
+                                 type="text"
+                                 id="lname"
+                                 name="lname"
+                                 placeholder="Input last name"
+                                 className="mt-1 block w-40 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                              />
+                           </div>
                         </div>
                         <div>
                            <label htmlFor="email" className="text-sm font-medium text-gray-700">
@@ -106,22 +101,22 @@ function Signup() {
                               className="mt-1 block w-80 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                            />
                         </div>
-                        <div>
+                        <div className="relative">
                            <label htmlFor="password" className="text-sm font-medium text-gray-700">
                               Password
                            </label>
                            <input
-                              type="password"
+                              type={showPassword ? "text" : "password"}
                               id="password"
                               name="password"
                               value={password}
-                              placeholder="Enter at least 8+ characters"
+                              placeholder="Enter at least 6 characters"
                               onChange={(e) => setPassword(e.target.value)}
                               required
-                              className="mt-1 block w-80 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                              className="mt-1 block w-80 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm pr-10"
                            />
                            <FaEye
-                              className="absolute right-7 bottom-1/3 transform text-gray-400 cursor-pointer"
+                              className="absolute right-20 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
                               onClick={() => setShowPassword(!showPassword)}
                            />
                         </div>
@@ -133,7 +128,6 @@ function Signup() {
                            />
                            <label htmlFor="termsofuse" className="text-sm text-gray-700">
                               By signing up, I agree with the{" "}
-
                               <Link to="#" className="text-sm text-[#F48242] ml-auto">
                                  Terms of Use & Privacy Policy
                               </Link>
@@ -161,10 +155,7 @@ function Signup() {
                      <div className="flex items-center justify-between mt-6">
                         <p className="text-sm text-black">
                            Returning user?{" "}
-                           <Link
-                              to="/login"
-                              className="text-[#F48242]"
-                           >
+                           <Link to="/login" className="text-[#F48242]">
                               Log in here
                            </Link>
                         </p>

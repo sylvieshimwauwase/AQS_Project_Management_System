@@ -9,10 +9,12 @@ import CreateNewPassword from './assets/pages/PasswordSetup';
 import Createemailemployee from './assets/pages/createemailemployee';
 import Addmember from './assets/pages/Addmember';
 import Dashboard from './assets/pages/Dashboard';
+import Employee from './assets/pages/Employee';
 
  
 function App() {
 
+   
    
    return (
       <BrowserRouter>
@@ -25,12 +27,15 @@ function App() {
             <Route path='/createNewPassword' element={<CreateNewPassword />} />
             <Route path='/createemailemployee' element={<Createemailemployee/>} />
             <Route path='/addmember' element={<Addmember/>} />
-            <Route path='/dashboard' element={<Dashboard/>} />
-            
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/employee' element={<Employee />} />
 
             
-
+            
          </Routes>
+
+         
+            
       </BrowserRouter>
    );
 }
