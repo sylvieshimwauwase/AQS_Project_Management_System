@@ -1,36 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import groupImage from "../images/Group.jfif";
+import groupImage from "../assets/images/Group.jfif";
 import Button from "../components/Button";
-import Google from "../images/Vector.png";
-import Facebook from "../images/Logo facebook.png";
+import Google from "../assets/images/Vector.png";
+import Facebook from "../assets/images/Logo facebook.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FaLock, FaEye, FaEnvelope } from "react-icons/fa";
-import { makeLogin, selectLogin, selectLoginLoading, selectLoginError } from "../../features/Auth/AuthSlice";
+import { makeLogin, selectLogin, selectLoginLoading, selectLoginError } from "../features/Auth/AuthSlice";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [submitted, setSubmitted] = useState(false);
-
   const user = useSelector(selectLogin);
   const loading = useSelector(selectLoginLoading);
   const loginError = useSelector(selectLoginError);
 
-  // New state to ensure we wait for the authentication check
-  const [authChecked, setAuthChecked] = useState(false);
-
   useEffect(() => {
+
     if (user) {
-      // Redirect to dashboard or home after successful login
+      // If the user is already logged in, redirect to the dashboard
       navigate("/dashboard");
-    } else {
-      // Once the authentication status has been confirmed, update authChecked
-      setAuthChecked(true);
     }
   }, [user, navigate]);
 
@@ -68,8 +62,7 @@ function Login() {
     setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
-  // Wait for authChecked to be true before rendering the login form
-  return authChecked ? (
+  return  !user? ( // Only show login form if the user is not logged in
     <div className="min-h-screen flex items-center justify-center py-10">
       <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden max-w-6xl w-full">
         <div className="w-[50vw] bg-[#264667] flex flex-col items-center justify-center text-white px-8">
@@ -136,9 +129,13 @@ function Login() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <input type="checkbox" id="remember" className="mr-2 leading-tight" />
-                    <label htmlFor="remember" className="text-sm text-gray-700">Remember me</label>
+                    <label htmlFor="remember" className="text-sm text-gray-700">
+                      Remember me
+                    </label>
                   </div>
-                  <Link to="/resetPassword" className="text-sm text-[#F48242]">Forgot your password?</Link>
+                  <Link to="/resetPassword" className="text-sm text-[#F48242]">
+                    Forgot your password?
+                  </Link>
                 </div>
 
                 <Button text={loading ? "Logging in..." : "Login"} disabled={loading} />
@@ -160,7 +157,9 @@ function Login() {
             <div className="flex items-center justify-between mt-6">
               <p className="text-sm text-black">
                 Don't have an account yet?{" "}
-                <Link to="/signup" className="text-[#F48242]">Sign Up</Link>
+                <Link to="/signup" className="text-[#F48242]">
+                  Sign Up
+                </Link>
               </p>
             </div>
           </div>
@@ -168,7 +167,7 @@ function Login() {
       </div>
     </div>
   ) : (
-    <p>Checking authentication...</p> // Show a loading state until auth is checked
+    <p>Redirecting to dashboard...</p>
   );
 }
 

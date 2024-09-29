@@ -7,7 +7,7 @@ const initialState = {
         email: localStorage.getItem("email"),
       }
     : null,
-  users: [],
+  users: null,
   loading: false,
   error: null,
 };
@@ -45,6 +45,7 @@ export const loginSlice = createSlice({
       .addCase(makeLogin.fulfilled, (state, action) => {
         state.loading = false;
         state.userData = action.payload;
+        state.users = action.payload.user;
       })
       .addCase(makeLogin.rejected, (state, action) => {
         state.loading = false;

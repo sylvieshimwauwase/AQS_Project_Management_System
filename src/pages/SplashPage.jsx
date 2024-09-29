@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import logo from "../images/download.png";
+import logo from "../assets/images/download.png";
 
 function SplashPage() {
    const navigate = useNavigate();

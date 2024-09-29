@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import groupImage from "../images/Group.jfif";
+import groupImage from "../assets/images/Group.jfif";
 import Button from "../components/Button";
-import Google from "../images/Vector.png";
-import Facebook from "../images/Logo facebook.png";
+import Google from "../assets/images/Vector.png";
+import Facebook from "../assets/images/Logo facebook.png";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 

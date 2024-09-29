@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SplashPage from './assets/components/SplashPage';
-import Login from './assets/pages/Login';
-import Signup from './assets/pages/Signup';
-import ResetPassword from './assets/pages/ResetPassword';
-import VerifyCode from './assets/pages/VerifyCode';
-import CreateNewPassword from './assets/pages/PasswordSetup';
-import Createemailemployee from './assets/pages/createemailemployee';
-import Addmember from './assets/pages/Addmember';
-import Dashboard from './assets/pages/Dashboard';
-import Employee from './assets/pages/Employee';
+import SplashPage from './pages/SplashPage';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ResetPassword from './pages/ResetPassword';
+import VerifyCode from './pages/VerifyCode';
+import CreateNewPassword from './pages/PasswordSetup';
+import Createemailemployee from './pages/createemailemployee';
+import Addmember from './pages/Addmember';
+import Dashboard from './pages/Dashboard';
+import Employee from './pages/Employee';
+import DashboardLayout from './layouts/DashboardLayout';
+import Projects from './pages/Projects';
+import Messages from './pages/Messages';
 
  
 function App() {
@@ -25,9 +28,16 @@ function App() {
             <Route path='/createNewPassword' element={<CreateNewPassword />} />
             <Route path='/createemailemployee' element={<Createemailemployee/>} />
             <Route path='/addmember' element={<Addmember/>} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/employee' element={<Employee />} />
-            
+        
+
+            <Route path='/dashboard' element={<DashboardLayout />}> 
+               <Route index element={<Dashboard />} />
+               <Route path='/dashboard/employee' element={<Employee />} />
+               <Route path='/dashboard/projects' element={<Projects />} />
+               <Route path='/dashboard/messages' element={<Messages />} />
+            </Route>
+
+
          </Routes>
   
       </BrowserRouter>
