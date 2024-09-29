@@ -12,25 +12,39 @@ function Dashboard() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const chartData = {
-    labels: ["Sales", "Expenses", "Investments"],
-    datasets: [
-      {
-        data: [300, 50, 100],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+
+  // const [darkMode, setDarkMode] = useState(false);
+
+  // // Toggle dark mode
+  // const handleDarkModeToggle = () => {
+  //   setDarkMode(!darkMode);
+  //   if (!darkMode) {
+  //     document.documentElement.classList.add('dark');
+  //   } else {
+  //     document.documentElement.classList.remove('dark');
+  //   }
+  // };
+
+
+  // const chartData = {
+  //   labels: ["Sales", "Expenses", "Investments"],
+  //   datasets: [
+  //     {
+  //       data: [300, 50, 100],
+  //       backgroundColor: [
+  //         "rgba(255, 99, 132, 0.2)",
+  //         "rgba(54, 162, 235, 0.2)",
+  //         "rgba(255, 206, 86, 0.2)",
+  //       ],
+  //       borderColor: [
+  //         "rgba(255, 99, 132, 1)",
+  //         "rgba(54, 162, 235, 1)",
+  //         "rgba(255, 206, 86, 1)",
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //   ],
+  // };
   return (
     <div className="min-h-screen flex">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
@@ -144,7 +158,7 @@ function Dashboard() {
             </div>
           </section>
 
-          <section className="mt-8">
+          {/* <section className="mt-8">
             <h2 className="text-xl font-semibold mb-4">Statistics</h2>
             <Pie
               data={chartData}
@@ -157,9 +171,9 @@ function Dashboard() {
                   },
                 },
               }}
-              style={{ width: "200px", height: "200px" }} // Use style instead of width/height props
+              style={{ width: "80px", height: "80px" }} // Use style instead of width/height props
             />
-          </section>
+          </section> */}
         </div>
       </div>
     </div>

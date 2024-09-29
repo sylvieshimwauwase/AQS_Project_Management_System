@@ -14,8 +14,6 @@ import Employee from './assets/pages/Employee';
  
 function App() {
 
-   
-   
    return (
       <BrowserRouter>
          <Routes>
@@ -29,13 +27,9 @@ function App() {
             <Route path='/addmember' element={<Addmember/>} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/employee' element={<Employee />} />
-
-            
             
          </Routes>
-
-         
-            
+  
       </BrowserRouter>
    );
 }
