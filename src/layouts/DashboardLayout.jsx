@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Barchart from '../components/Barchart';
 import Sidebar from "../components/sidebar";
 import { Outlet, redirect, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
