@@ -13,6 +13,8 @@ import Employee from './pages/Employee';
 import DashboardLayout from './layouts/DashboardLayout';
 import Projects from './pages/Projects';
 import Messages from './pages/Messages';
+import Schedule from './pages/Schedule';
+import Reports from './pages/Reports';
 
  
 function App() {
@@ -35,6 +37,8 @@ function App() {
                <Route path='/dashboard/employee' element={<Employee />} />
                <Route path='/dashboard/projects' element={<Projects />} />
                <Route path='/dashboard/messages' element={<Messages />} />
+               <Route path='/dashboard/schedule' element={<Schedule />} />
+               <Route path='/dashboard/reports' element={<Reports />} />
             </Route>
 
 

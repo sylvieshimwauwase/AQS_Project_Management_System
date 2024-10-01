@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaCalendar, FaHome, FaPoll, FaRegEnvelope, FaRegFileAlt, FaUsers, FaBars } from 'react-icons/fa';
-
+import logo from '../assets/images/download.png';
 function Sidebar({ isOpen, toggleSidebar }) {
   return (
     <div className={`bg-[#264667] transition-all duration-300 ${isOpen ? 'w-64' : 'w-16'} h-full px-4 py-2 fixed`}>
       <div className='logo-container'>
-        <img src="../assets/images/download.png" alt="AQS Logo" className="w-12 h-12" />
+        <img src={logo} alt="AQS Logo" className="w-12 h-12 items-center justify-between" />
       </div>
       <div className='my-4 flex justify-between items-center'>
         <h1 className={`text-xl text-white font-semibold transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}>

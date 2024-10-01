@@ -8,6 +8,8 @@ import { FaEye } from "react-icons/fa";
 
 function Signup() {
    const [email, setEmail] = useState("");
+   const [firstname, setFirstname] = useState("");
+   const [lastname, setLastname] = useState("");
    const [password, setPassword] = useState("");
    const [showPassword, setShowPassword] = useState(false);
    const [errors, setErrors] = useState({});
@@ -27,6 +29,12 @@ function Signup() {
       } else if (password.length < 6) {
          errors.password = "Password must be at least 6 characters";
       }
+      if (!firstname) {
+         errors.firstname = "First name cannot be empty";
+      }
+      if (!lastname) {
+         errors.lastname = "Last name cannot be empty";
+      }
 
       setErrors(errors);
       return Object.keys(errors).length === 0;
@@ -37,6 +45,8 @@ function Signup() {
       if (handleValidation()) {
          console.log("Email: ", email);
          console.log("Password: ", password);
+         console.log("First Name: ", firstname);
+         console.log("Last Name: ", lastname);
       }
    };
 
@@ -69,6 +79,8 @@ function Signup() {
                                  type="text"
                                  id="fname"
                                  name="fname"
+                                 value={firstname}
+                                 onChange={(e) => setFirstname(e.target.value)}
                                  placeholder="Input first name"
                                  className="mt-1 block w-40 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                               />
@@ -81,6 +93,8 @@ function Signup() {
                                  type="text"
                                  id="lname"
                                  name="lname"
+                                 value={lastname}
+                                 onChange={(e) => setLastname(e.target.value)}
                                  placeholder="Input last name"
                                  className="mt-1 block w-40 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                               />
