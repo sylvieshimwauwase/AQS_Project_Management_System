@@ -4,155 +4,69 @@ import { selectLogin } from '../features/Auth/AuthSlice';
 import Barchart from '../components/Barchart'; 
 import CalendarComponent from '../components/Calender';
 import LineChart from '../components/Linechart';
-import PieChart from './Piechart';
-
+import Piechart from '../components/Piechart';
+import Horizontal from '../components/Horizontal';  // Import the Horizontal progress bar
+import Footer from '../components/Footer';
 
 function Dashboard() {
   const user = useSelector(selectLogin);
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <header className="mb-6">
-        <h2 className="text-3xl font-semibold text-[#264667]">
-          Welcome Back, <span className="text-[#4b749d]">{user.hod_name}</span>
-        </h2>
-        <p className="text-gray-600">
-          Let’s make our department a great place for everyone. Check your new notifications below.
-        </p>
-      </header>
+    <div className="flex flex-col min-h-screen">
+      {/* Main Content */}
+      <div className="flex-grow p-6 bg-gray-100">
+        {/* Header */}
+        <header className="mb-6">
+          <h2 className="text-3xl font-semibold text-[#264667] pb-7">
+            Welcome Back, <span className="text-[#4b749d]">{user.hod_name}</span>
+          </h2>
+          <p className="text-gray-600">
+            Let’s make our department a great place for everyone. Check your new notifications below.
+          </p>
+        </header>
 
-      <section>
-        <h2 className="text-xl font-semibold mb-4">New Updates</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Card 1 */}
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-2">Project Dashboard</h3>
-            <p>New Assign</p>
-            <div className="flex space-x-4 mt-4">
-              <a href="/progress-page-1">
-                <img
-                  src="./src/assets/images/img3.png"
-                  alt="Person"
-                  className="w-10 h-10 rounded-full hover:scale-105 transition-transform"
-                />
-              </a>
-              <a href="/progress-page-2">
-                <img
-                  src="./src/assets/images/img4.png"
-                  alt="Person"
-                  className="w-10 h-10 rounded-full hover:scale-105 transition-transform"
-                />
-              </a>
+        {/* Bar Chart & Calendar */}
+        <section className="mt-10">
+          <div className="flex gap-6">
+            {/* Bar Chart */}
+            <div className="w-2/3 bg-white p-6 rounded-lg shadow-md">
+              <Barchart />
+            </div>
+
+            {/* Calendar */}
+            <div className="w-1/3 p-6 bg-white rounded-lg shadow-md flex items-center justify-center">
+              <CalendarComponent />
             </div>
           </div>
+        </section>
 
-          {/* Card 2 */}
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-2">Project In progress</h3>
-            <p>Active People</p>
-            <div className="flex space-x-4 mt-4">
-              <a href="/progress-page-1">
-                <img
-                  src="./src/assets/images/img4.png"
-                  alt="Person"
-                  className="w-10 h-10 rounded-full hover:scale-105 transition-transform"
-                />
-              </a>
-              <a href="/progress-page-2">
-                <img
-                  src="./src/assets/images/img5.png"
-                  alt="Person"
-                  className="w-10 h-10 rounded-full hover:scale-105 transition-transform"
-                />
-              </a>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-2">Project Overdue</h3>
-            <p>Active people</p>
-            <div className="flex space-x-4 mt-4">
-              <a href="/progress-page-1">
-                <img
-                  src="./src/assets/images/img3.png"
-                  alt="Person"
-                  className="w-10 h-10 rounded-full hover:scale-105 transition-transform"
-                />
-              </a>
-              <a href="/progress-page-2">
-                <img
-                  src="./src/assets/images/img2.png"
-                  alt="Person"
-                  className="w-10 h-10 rounded-full hover:scale-105 transition-transform"
-                />
-              </a>
-            </div>
-          </div>
-
-          {/* Card 4 */}
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-2">Project Done</h3>
-            <p>People in charge</p>
-            <div className="flex space-x-4 mt-4">
-              <a href="/progress-page-1">
-                <img
-                  src="./src/assets/images/img1.png"
-                  alt="Person"
-                  className="w-10 h-10 rounded-full hover:scale-105 transition-transform"
-                />
-              </a>
-              <a href="/progress-page-2">
-                <img
-                  src="./src/assets/images/img5.png"
-                  alt="Person"
-                  className="w-10 h-10 rounded-full hover:scale-105 transition-transform"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    
-    
-    <section className="mt-10">
-        <h2 className="text-xl font-semibold mb-4">Performance Overview & Calendar</h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <Barchart />
-          </div>
-
-          
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <CalendarComponent />
-          </div>
-        </div>
-      </section>
-
-       {/* Line Chart below the Bar Chart and Calendar */}
-       <section className="mt-10">
-       <div className="mt-10">
-          <h2 className="text-xl font-semibold mb-4">Line Chart Overview</h2>
+        {/* Line Chart */}
+        <section className="mt-10">
+          <h2 className="text-xl font-semibold mb-4">Employees Chart Overview</h2>
           <div className="bg-white p-6 rounded-lg shadow-md">
             <LineChart />
           </div>
-        </div>
-      </section>
+        </section>
 
-       {/* Pie Chart */}
-       <section className="mt-10">
-       <div className="bg-white p-6 rounded-lg shadow-md w-90 h-90">
-            <PieChart />
+        {/* Pie Chart & Horizontal Progress Bar */}
+        <section className="mt-10">
+          <h2 className="text-xl font-semibold mb-4">Project Progress & Status</h2>
+          <div className="flex gap-6">
+            {/* Pie Chart */}
+            <div className="w-1/2 bg-white p-8 rounded-lg shadow-md flex items-center justify-center">
+              <Piechart />
+            </div>
+
+            {/* Horizontal Progress Bar */}
+            <div className="w-1/2 bg-white p-8 rounded-lg shadow-md flex items-center justify-center">
+              <Horizontal />
+            </div>
           </div>
-        
+        </section>
+      </div>
 
-       </section>
-       
-      
-
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
