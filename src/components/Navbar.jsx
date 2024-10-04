@@ -5,30 +5,37 @@ import { selectLogin } from '../features/Auth/AuthSlice';
 
 const Navbar = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(''); // State to manage search input
 
   const toggleProfileMenu = () => {
     setIsProfileMenuOpen(!isProfileMenuOpen);
   };
+  
   const user = useSelector(selectLogin);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    // You can add your search handling logic here if needed
+    console.log("Search query:", e.target.value);
+  };
 
   return (
     <nav className="bg-white shadow-md p-4 flex justify-between items-center">
       <h1 className="text-2xl font-bold text-[#264667]">Africa Quantitative Science</h1>
       <div className="flex items-center space-x-6">
-        {/* Search and Bell icons */}
-        <div className='flex-items-center gap-x-5'>
-          {/* <div className="relative md:w-65">
-            <span className='relative md:absolute inset-y-0 left-0 flex items-center pl-2'>
-              <button className="p-1 focus:outline-none text-white md:text-black">
-                <FaSearch />
-              </button>
-              <input 
-                type="text" 
-                placeholder="Search" 
-                className="w-full px-4 py-1 pr-4 rounded shadow focus:outline-none hidden md:block" 
-              />
-            </span> */}
-          {/* </div> */}
+        {/* Search input and Bell icon */}
+        <div className='flex items-center gap-x-5'>
+          <div className="relative">
+            {/* Search Bar */}
+            <input 
+              type="text" 
+              value={searchQuery} 
+              onChange={handleSearchChange}
+              placeholder="Search" 
+              className="px-4 py-2 pr-4 rounded-md border focus:outline-none shadow-md hidden md:block w-44 pl-9" 
+            />
+            <FaSearch className="absolute top-3 left-2 text-gray-500 " />
+          </div>
         </div>
 
         {/* Bell icon */}
@@ -36,11 +43,6 @@ const Navbar = () => {
           <FaBell className="w-6 h-6 text-[#264667]" />
           <span className="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full px-1">3</span>
         </button>
-
-        {/* Moon icon for dark mode
-        <button className="focus:outline-none">
-          <FaMoon className="w-6 h-6 text-[#264667]" />
-        </button> */}
 
         {/* User profile and menu */}
         <div className="relative">
