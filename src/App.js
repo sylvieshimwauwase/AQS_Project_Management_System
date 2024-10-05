@@ -2,7 +2,9 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Navbar from './Components/Navbar'
 
-import Login from './pages/Login';
+// import Login from './pages/Login';
+import Login from './assets/pages/Login.jsx';
+import Signup from './assets/pages/Signup.jsx';
 // import Dashboard from './pages/Dashboard';
 // import VerifyCode from './pages/VerifyCode';
 // import ResetPassword from './pages/ResetPassword';
@@ -11,14 +13,14 @@ import Login from './pages/Login';
 // import PasswordSetup from './pages/PasswordSetup';
 // import Sidebare from './Components/Sidebare';
 // import EmployeeDashMain from './Components/EmployeeDashMain';
-import EmployeeDashboard from './pages/EmployeeDashboard.jsx';
-import ProjectStats from './pages/ProjectStats';
+// import EmployeeDashboard from './pages/EmployeeDashboard.jsx';
+// import ProjectStats from './pages/ProjectStats';
 function App() {
   return (
     <BrowserRouter> 
     <Routes>
-       <Route path='/ProjectStats' element={<ProjectStats/>} /> 
-       <Route path='/EmployeeDashboard' element={<EmployeeDashboard/>} />
+       {/* <Route path='/ProjectStats' element={<ProjectStats/>} />  */}
+       {/* <Route path='/EmployeeDashboard' element={<EmployeeDashboard/>} /> */}
        {/* <Route path='/Navbar' element={<Navbar/>} /> */}
        <Route path='/Signup' element={<Signup/>} />
        <Route path='/Login' element={<Login/>} />
