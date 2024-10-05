@@ -6,15 +6,20 @@ import Facebook from "../assets/images/Logo facebook.png";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 
+import { useDispatch, useSelector } from "react-redux";
+import { signupUser, resetSignupState } from "../features/Auth/SignupSlice"; 
+
 function Signup() {
+   const dispatch = useDispatch();
+   const { loading, error } = useSelector((state) => state.signup);
    const [email, setEmail] = useState("");
    const [firstname, setFirstname] = useState("");
    const [lastname, setLastname] = useState("");
    const [password, setPassword] = useState("");
    const [showPassword, setShowPassword] = useState(false);
-   const [errors, setErrors] = useState({});
+ const [validationErrors, setValidationErrors] = useState({});
 
-   const handleValidation = () => {
+const handleValidation = () => {
       let errors = {};
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -36,17 +41,20 @@ function Signup() {
          errors.lastname = "Last name cannot be empty";
       }
 
-      setErrors(errors);
+      setValidationErrors(errors);
       return Object.keys(errors).length === 0;
-   }
+   };
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
       if (handleValidation()) {
-         console.log("Email: ", email);
-         console.log("Password: ", password);
-         console.log("First Name: ", firstname);
-         console.log("Last Name: ", lastname);
+         const userData = {
+            email,
+            firstname,
+            lastname,
+            password,
+         };
+         await dispatch(signupUser(userData)); 
       }
    };
 
@@ -101,9 +109,7 @@ function Signup() {
                            </div>
                         </div>
                         <div>
-                           <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                              Email
-                           </label>
+                        <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
                            <input
                               type="email"
                               id="email"
@@ -112,9 +118,11 @@ function Signup() {
                               placeholder="example@gmail.com"
                               onChange={(e) => setEmail(e.target.value)}
                               required
-                              className="mt-1 block w-80 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                              className={`mt-1 block w-80 px-2 py-2 border ${validationErrors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                            />
+                           {validationErrors.email && <p className="text-red-500 text-xs">{validationErrors.email}</p>}
                         </div>
+                  
                         <div className="relative">
                            <label htmlFor="password" className="text-sm font-medium text-gray-700">
                               Password
@@ -129,12 +137,13 @@ function Signup() {
                               required
                               className="mt-1 block w-80 px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm pr-10"
                            />
+                      {validationErrors.password && <p className="text-red-500 text-xs">{validationErrors.password}</p>}
                            <FaEye
                               className="absolute right-20 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
                               onClick={() => setShowPassword(!showPassword)}
                            />
                         </div>
-                        <div className="flex items-center justify-between mb-4">
+                       <div className="flex items-center justify-between mb-4">
                            <input
                               type="checkbox"
                               id="termsofuse"
@@ -147,7 +156,8 @@ function Signup() {
                               </Link>
                            </label>
                         </div>
-                        <Button text="Register" />
+                        <Button text={loading ? "Registering..." : "Register"} disabled={loading} />
+                        {error && <p className="text-red-500 text-xs">{error}</p>} 
                      </div>
                   </form>
                   <div className="flex items-center justify-center mt-4">
@@ -183,3 +193,4 @@ function Signup() {
 }
 
 export default Signup;
+
