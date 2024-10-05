@@ -40,8 +40,6 @@ function App() {
                <Route path='/dashboard/schedule' element={<Schedule />} />
                <Route path='/dashboard/reports' element={<Reports />} />
             </Route>
-
-
          </Routes>
   
       </BrowserRouter>

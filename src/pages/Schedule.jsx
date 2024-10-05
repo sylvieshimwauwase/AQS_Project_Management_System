@@ -1,9 +1,25 @@
-import React from 'react'
+import React from 'react';
+import ActionsSection from '../components/ActionSection';
+import TimelineCalendar from '../components/TimelineCalender';
+import Addprojectform from '../components/Addprojectform';
 
-function Schedule() {
+const Schedule = () => {
   return (
-    <div>Schedule</div>
-  )
-}
+    <div className="min-h-screen bg-gray-100">
+      
 
-export default Schedule
+      <main className="p-4 space-y-4">
+        {/* Add New Project Form */}
+        <Addprojectform />
+
+        {/* Actions Section */}
+        <ActionsSection />
+
+        {/* Timeline & Calendar */}
+        <TimelineCalendar />
+      </main>
+    </div>
+  );
+};
+
+export default Schedule;

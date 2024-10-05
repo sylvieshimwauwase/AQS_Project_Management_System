@@ -20,7 +20,7 @@ export const makeLogin = createAsyncThunk(
         if (response) {
           localStorage.setItem("token", response.data.authorization.token); 
           localStorage.setItem("email", response.data.user.email);
-          localStorage.setItem("hod_name", response.data.user.hod_name);
+          localStorage.setItem("user", response.data.user);
         
         }
         return response.data;
