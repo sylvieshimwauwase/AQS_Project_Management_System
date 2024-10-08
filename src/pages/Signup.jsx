@@ -12,12 +12,12 @@ import {
   signup,
   selectLoginLoading,
   selectLoginError,
-} from "../features/Auth/AuthSlice"; // Added loading and error selectors
+} from "../features/Auth/AuthSlice"; 
 
 function Signup() {
   const dispatch = useDispatch();
-  const loading = useSelector(selectLoginLoading); // Select loading state
-  const error = useSelector(selectLoginError); // Select error state
+  const loading = useSelector(selectLoginLoading); 
+  const error = useSelector(selectLoginError); 
 
   const [email, setEmail] = useState("");
   const [hod_name, sethod_name] = useState("");
