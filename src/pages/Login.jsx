@@ -6,7 +6,12 @@ import Google from "../assets/images/Vector.png";
 import Facebook from "../assets/images/Logo facebook.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FaLock, FaEye, FaEnvelope } from "react-icons/fa";
-import { makeLogin, selectLogin, selectLoginLoading, selectLoginError } from "../features/Auth/AuthSlice";
+import {
+  makeLogin,
+  selectLogin,
+  selectLoginLoading,
+  selectLoginError,
+} from "../features/Auth/AuthSlice";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -21,9 +26,8 @@ function Login() {
   const loginError = useSelector(selectLoginError);
 
   useEffect(() => {
-
     if (user) {
-      // If the user is already logged in, redirect to the dashboard
+      
       navigate("/dashboard");
     }
   }, [user, navigate]);
@@ -53,7 +57,7 @@ function Login() {
     setSubmitted(true);
 
     if (handleValidation()) {
-      // Dispatch the login action with the email and password
+      
       dispatch(makeLogin({ email, password }));
     }
   };
@@ -62,13 +66,15 @@ function Login() {
     setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
-  return  !user? ( // Only show login form if the user is not logged in
+  return !user ? ( 
     <div className="min-h-screen flex items-center justify-center py-10">
       <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden max-w-6xl w-full">
         <div className="w-[50vw] bg-[#264667] flex flex-col items-center justify-center text-white px-8">
           <img src={groupImage} alt="" className="filter brightness-75" />
           <div className="mt-4 space-y-4 text-center">
-            <p className="text-lg font-bold">Welcome to Africa Quantitative Science</p>
+            <p className="text-lg font-bold">
+              Welcome to Africa Quantitative Science
+            </p>
             <p className="text-sm">
               This system is to help you in the management here at work.
               <br />
@@ -79,7 +85,9 @@ function Login() {
 
         <div className="w-[50vw] bg-white flex items-center justify-center h-full flex-col p-2 shadow-md rounded-lg m-20">
           <div className="bg-white rounded-xlg p-6 border-black">
-            <h2 className="text-3xl font-bold text-black-700">Welcome back 👋</h2>
+            <h2 className="text-3xl font-bold text-black-700">
+              Welcome back 👋
+            </h2>
             <p className="text-gray-600">Log in your account</p>
             <form className="mt-6" onSubmit={handleSubmit}>
               <div className="relative space-y-4">
@@ -120,15 +128,23 @@ function Login() {
                     onClick={() => setShowPassword(!showPassword)}
                   />
                   {submitted && errors.password && (
-                    <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.password}
+                    </p>
                   )}
                 </div>
                 {loginError && (
-                  <p className="text-red-500 text-sm mt-1">{loginError.message}</p>
+                  <p className="text-red-500 text-sm mt-1">
+                    {loginError.message}
+                  </p>
                 )}
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <input type="checkbox" id="remember" className="mr-2 leading-tight" />
+                    <input
+                      type="checkbox"
+                      id="remember"
+                      className="mr-2 leading-tight"
+                    />
                     <label htmlFor="remember" className="text-sm text-gray-700">
                       Remember me
                     </label>
@@ -138,12 +154,17 @@ function Login() {
                   </Link>
                 </div>
 
-                <Button text={loading ? "Logging in..." : "Login"} disabled={loading} />
+                <Button
+                  text={loading ? "Logging in..." : "Login"}
+                  disabled={loading}
+                />
               </div>
             </form>
             <div className="flex items-center justify-center mt-4">
               <span className="border-b w-1/5 lg:w-1/4"></span>
-              <span className="text-xs text-center text-gray-500 uppercase mx-2">or</span>
+              <span className="text-xs text-center text-gray-500 uppercase mx-2">
+                or
+              </span>
               <span className="border-b w-1/5 lg:w-1/4"></span>
             </div>
             <div className="mt-2 flex items-center justify-center gap-3">
