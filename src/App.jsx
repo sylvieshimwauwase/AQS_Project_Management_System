@@ -15,7 +15,7 @@ import Projects from './pages/Projects';
 import Messages from './pages/Messages';
 import Schedule from './pages/Schedule';
 import Reports from './pages/Reports';
-
+import EmployeeMainDashboard from './pages/Composemessage';
  
 function App() {
 
@@ -30,7 +30,8 @@ function App() {
             <Route path='/createNewPassword' element={<CreateNewPassword />} />
             <Route path='/createemailemployee' element={<Createemailemployee/>} />
             <Route path='/addmember' element={<Addmember/>} />
-        
+            <Route path="/EmployeeMainDashboard" element={<EmployeeMainDashboard />} />
+
 
             <Route path='/dashboard' element={<DashboardLayout />}> 
                <Route index element={<Dashboard />} />
