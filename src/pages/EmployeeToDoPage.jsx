@@ -1,9 +1,9 @@
 import React from "react";
 import EmployeeSidebar from "../components/EmployeeSidebar";
 import EmployeeHeader from "../components/EmployeeHeader";
-import EmployeeDash from "../components/EmployeeDash";
+import EmployeeToDo from "../components/EmployeeToDo";
 
-const EmployeeMainDashboard = () => {
+const EmployeeToDoPage = () => {
   return (
     <div style={styles.mainContainer}>
       {/* Sidebar */}
@@ -18,7 +18,7 @@ const EmployeeMainDashboard = () => {
 
         {/* Dashboard Content */}
         <div style={styles.dashboardContainer}>
-          <EmployeeDash />
+          <EmployeeToDo />
         </div>
       </div>
     </div>
@@ -49,5 +49,5 @@ const styles = {
   },
 };
 
-export default EmployeeMainDashboard;
+export default EmployeeToDoPage;
 

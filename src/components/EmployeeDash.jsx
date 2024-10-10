@@ -131,7 +131,7 @@ const styles = {
   cardContainer: {
     backgroundColor: '#f9f9f9',  // light background for the body
     borderRadius: '10px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',  // similar shadow as in the image
+    boxShadow: '10px 16px 18px rgba(0, 0, 0, 0.1)',  // similar shadow as in the image
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',

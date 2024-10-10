@@ -15,8 +15,9 @@ import Projects from './pages/Projects';
 import Messages from './pages/Messages';
 import Schedule from './pages/Schedule';
 import Reports from './pages/Reports';
-import EmployeeMainDashboard from './pages/Composemessage';
- 
+import EmployeeMainDashboard from './pages/EmployeeMainDashboard';
+import EmployeeToDoPage from './pages/EmployeeToDoPage';
+import EmployeeNotifications from './pages/EmployeeNotificationsPage';
 function App() {
 
    return (
@@ -31,6 +32,9 @@ function App() {
             <Route path='/createemailemployee' element={<Createemailemployee/>} />
             <Route path='/addmember' element={<Addmember/>} />
             <Route path="/EmployeeMainDashboard" element={<EmployeeMainDashboard />} />
+            <Route path="/EmployeeToDoPage" element={<EmployeeToDoPage />} />
+            <Route path="/EmployeeNotifications" element={<EmployeeNotifications />} />
+
 
 
             <Route path='/dashboard' element={<DashboardLayout />}> 
