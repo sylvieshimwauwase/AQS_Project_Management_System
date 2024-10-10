@@ -22,6 +22,7 @@ import EmployeeProjects from './pages/EmployeeProjectsPage';
 import PerformanceReportPage from './components/PerformanceReportPage';
 import HODNotification from './components/HODNotifications';
 import SchedulePage from './components/SchedulePage';
+import ProjectManagement from './components/ProjectManagement';
 function App() {
 
    return (
@@ -29,6 +30,8 @@ function App() {
          <Routes>
             <Route path="/" element={<SplashPage />} />
             <Route path="/EmployeeProjects" element={<EmployeeProjects />} />
+            <Route path="/ProjectManagement" element={<ProjectManagement />} />
+
             <Route path="/PerformanceReportPage" element={<PerformanceReportPage />} />
             <Route path="/HODNotification" element={<HODNotification />} />
             <Route path="/SchedulePage" element={<SchedulePage />} />
