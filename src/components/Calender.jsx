@@ -19,41 +19,41 @@ const CalendarComponent = () => {
         date: selectedDate.toDateString(),
         title: taskTitle,
       };
-      setTasks([...tasks, newTask]); // Add the task to the tasks array
+      setTasks([...tasks, newTask]);
     }
   };
 
-  // Handle when a day in the calendar is clicked
+  
   const handleDayClick = (value) => {
-    setSelectedDate(value); // Store the clicked date
+    setSelectedDate(value); 
   };
 
-  // Function to highlight dates that have tasks
+  
   const tileClassName = ({ date, view }) => {
     if (view === 'month') {
       const hasTask = tasks.some(
         (task) => task.date === date.toDateString()
       );
-      return hasTask ? "bg-blue-200 text-blue-900 font-semibold rounded-full" : ""; // Highlight task dates
+      return hasTask ? "bg-blue-200 text-blue-900 font-semibold rounded-full" : ""; 
     }
     return null;
   };
 
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Calendar Title */}
+      
       <h2 className="text-xl font-semibold text-center mb-6 text-gray-700"><button className="border px-2 py-1 rounded">📅</button>Calendar</h2>
 
-      {/* Calendar Component */}
+      
       <Calendar
         className="w-full h-full text-xs border-2 border-gray-200 rounded-lg p-2"
-        tileClassName={tileClassName} // Highlight task dates
-        onClickDay={handleDayClick} // Capture the clicked date
+        tileClassName={tileClassName} 
+        onClickDay={handleDayClick} 
         nextLabel="Next"
         prevLabel="Prev"
       />
 
-      {/* Add Task Button */}
+      
       <div className="flex justify- mt-4">
         <button
           className="flex items-center bg-[#244865] text-white text-xs px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
