@@ -1,94 +1,14 @@
-// // import React from 'react'
-// // import './Sidebare.css';
-// // function Sidebare() {
-// //   return (
-// //     <div>
-// //         <div class="sidebar">
-// //   {/* <div class="sidebar-header"> */}
-// //     {/* <button class="menu-btn">
-// //       &#9776;
-// //     </button>
-// //     <img src="logo.png" alt="AQS Logo" class="logo" />
-// //   </div> */}
-// //   <div class="profile-section">
-// //     <div class="profile-pic">
-// //       <img src="profile-pic.png" alt="Profile" />
-// //     </div>
-// //     <p class="employee-name">Name of Employee</p>
-// //   </div>
-// //   <nav class="nav-links">
-// //     <a href="#" class="nav-item">
-// //       <span class="nav-icon">📊</span>
-// //       Dashboard
-// //     </a>
-// //     <a href="#" class="nav-item">
-// //       <span class="nav-icon">📄</span>
-// //       Projects
-// //     </a>
-// //     <a href="#" class="nav-item">
-// //       <span class="nav-icon">🔔</span>
-// //       Notifications
-// //     </a>
-// //     <a href="#" class="sign-out">Sign out</a>
-// //     <br>
-// //     </br>
-// //     <br>
-// //     </br>
-// //     <br>
-// //     </br>
-// //     <label for="darkMode">Dark mode</label>
-// //     <input type="checkbox" id="darkMode" />
-// //   </nav>
-  
-// // </div>
-
-// //     </div>
-// //   )
-// // }
-
-// // export default Sidebare
-
-
-// import React from "react";
-// import { FaHome, FaProjectDiagram, FaBell } from "react-icons/fa";
-
-// const EmployeeSidebar = () => {
-//   return (
-//     <div className="sidebar">
-//       <div className="profile">
-//         <img src="employee-avatar.jpg" alt="Profile" />
-//         <p>Name of Employee</p>
-//       </div>
-//       <nav>
-//         <ul>
-//           <li>
-//             <FaHome /> Dashboard
-//           </li>
-//           <li>
-//             <FaProjectDiagram /> Projects
-//           </li>
-//           <li>
-//             <FaBell /> Notifications
-//           </li>
-//         </ul>
-//       </nav>
-//       <button className="logout-btn">Sign out</button>
-//       <div className="dark-mode-toggle">
-//         <label>
-//           <input type="checkbox" /> Dark Mode
-//         </label>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default EmployeeSidebar;
-
-
-import React from "react";
+import React, { useState } from "react";
 import { FaThLarge, FaProjectDiagram, FaBell, FaSignOutAlt } from "react-icons/fa";
 
 const EmployeeSidebar = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Handle Dark Mode Toggle
+  const handleToggle = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <div style={styles.sidebarContainer}>
       {/* Profile Section */}
@@ -126,8 +46,20 @@ const EmployeeSidebar = () => {
         <div style={styles.darkModeContainer}>
           <span>Dark mode</span>
           <label style={styles.switch}>
-            <input type="checkbox" />
-            <span style={styles.slider}></span>
+            <input type="checkbox" checked={darkMode} onChange={handleToggle} />
+            <span
+              style={{
+                ...styles.slider,
+                backgroundColor: darkMode ? "#4caf50" : "#ccc",
+              }}
+            >
+              <span
+                style={{
+                  ...styles.sliderCircle,
+                  transform: darkMode ? "translateX(20px)" : "translateX(0)",
+                }}
+              ></span>
+            </span>
           </label>
         </div>
       </div>
@@ -218,10 +150,16 @@ const styles = {
     borderRadius: '20px',
     transition: '.4s',
   },
-  sliderChecked: {
-    backgroundColor: '#2196F3',
+  sliderCircle: {
+    position: 'absolute',
+    top: '2px',
+    left: '2px',
+    width: '16px',
+    height: '16px',
+    backgroundColor: '#FF6A3D',
+    borderRadius: '50%',
+    transition: '.4s',
   },
 };
 
 export default EmployeeSidebar;
-

@@ -18,12 +18,21 @@ import Reports from './pages/Reports';
 import EmployeeMainDashboard from './pages/EmployeeMainDashboard';
 import EmployeeToDoPage from './pages/EmployeeToDoPage';
 import EmployeeNotifications from './pages/EmployeeNotificationsPage';
+import EmployeeProjects from './pages/EmployeeProjectsPage';
+import PerformanceReportPage from './components/PerformanceReportPage';
+import HODNotification from './components/HODNotifications';
+import SchedulePage from './components/SchedulePage';
 function App() {
 
    return (
       <BrowserRouter>
          <Routes>
             <Route path="/" element={<SplashPage />} />
+            <Route path="/EmployeeProjects" element={<EmployeeProjects />} />
+            <Route path="/PerformanceReportPage" element={<PerformanceReportPage />} />
+            <Route path="/HODNotification" element={<HODNotification />} />
+            <Route path="/SchedulePage" element={<SchedulePage />} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path='/resetPassword' element={<ResetPassword />} />
