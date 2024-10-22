@@ -29,7 +29,7 @@ function App() {
             <Route path='/verifyCode' element={<VerifyCode />} />
             <Route path='/createNewPassword' element={<CreateNewPassword />} />
             
-            <Route path='/addmember' element={<Addmember/>} />
+            
         
 
             <Route path='/dashboard' element={<DashboardLayout />}> 
@@ -40,6 +40,7 @@ function App() {
                <Route path='/dashboard/schedule' element={<Schedule />} />
                <Route path='/dashboard/reports' element={<Reports />} />
                <Route path='/dashboard/createemailemployee' element={<Createemailemployee/>} />
+               <Route path='/dashboard/addmember' element={<Addmember/>} />
             </Route>
          </Routes>
   

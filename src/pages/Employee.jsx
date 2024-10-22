@@ -30,7 +30,7 @@ const Employee = () => {
 
   
   const handleAddMemberClick = () => {
-    navigate('/addmember');
+    navigate('/dashboard/addmember');
   };
 
   return (
