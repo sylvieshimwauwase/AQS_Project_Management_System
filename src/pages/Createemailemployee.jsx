@@ -5,19 +5,28 @@ import { FaEye } from "react-icons/fa";
 
 function CreateEmailEmployee() {
   const [email, setEmail] = useState("");
-  const [defaultPassword, setDefaultPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [department, setDepartment] = useState("");
+  const [personalemail , setPersonalemail] = useState("");
+  const [employee_name, setEmployee_name] = useState("");
+  const [contact_number, setcontact_number] = useState("");
   const [position, setPosition] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const formData = {
+    employee_name,
+    email,
+    personalemail,
+    position,
+    personalemail,
+    contact_number,
+  };
 
   const handleValidation = () => {
     let errors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!fullName.trim()) {
-      errors["fullName"] = "Full name cannot be empty";
+    if (!employee_name.trim()) {
+      errors["employee_name"] = "Full name cannot be empty";
     }
 
     if (!email) {
@@ -26,14 +35,14 @@ function CreateEmailEmployee() {
       errors["email"] = "Email is not valid";
     }
 
-    if (!defaultPassword) {
-      errors["defaultPassword"] = "Password cannot be empty";
-    } else if (defaultPassword.length < 8) {
-      errors["defaultPassword"] = "Password must be at least 8 characters";
+ 
+    if (!contact_number) {
+      errors["contact_number"] = "Number cannot be empty";
+    } else if (contact_number.length > 15) {
+      errors["contact_number"] = "Number must be at least 8 characters";
     }
-
-    if (!department.trim()) {
-      errors["department"] = "Department cannot be empty";
+    if (!personalemail.trim()) {
+      errors["personalemail"] = "Personalemail cannot be empty";
     }
 
     if (!position.trim()) {
@@ -47,12 +56,9 @@ function CreateEmailEmployee() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (handleValidation()) {
-      console.log("Email:", email);
-      console.log("Password:", defaultPassword);
-      console.log("Full Name:", fullName);
-      console.log("Department:", department);
-      console.log("Position:", position);
-    }
+      console.log(formData);
+    
+  }
   };
 
   return (
@@ -79,15 +85,15 @@ function CreateEmailEmployee() {
             </h2>
                 <input
                   type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={fullName}
+                  id="employee_name"
+                  name="employee_name"
+                  value={employee_name}
                   placeholder="Input full name"
-                  onChange={(e) => setFullName(e.target.value)}
+                  onChange={(e) => setEmployee_name(e.target.value)}
                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
-                {errors.fullName && (
-                  <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+                {errors.employee_name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.employee_name}</p>
                 )}
               </div>
 
@@ -95,15 +101,15 @@ function CreateEmailEmployee() {
                 
                 <input
                   type="email"
-                  id="email"
-                  name="email"
-                  value={email}
+                  id="personalemail"
+                  name="personalemail"
+                  value={personalemail}
                   placeholder="Add the new email:example@aqs.org"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setPersonalemail(e.target.value)}
                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.personalemail}</p>
                 )}
               </div>
 
@@ -111,15 +117,15 @@ function CreateEmailEmployee() {
             
                 <input
                   type="text"
-                  id="department"
-                  name="department"
-                  value={department}
-                  placeholder="Department"
-                  onChange={(e) => setDepartment(e.target.value)}
+                  id="email"
+                  name="email"
+                  value={email}
+                  placeholder="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
-                {errors.department && (
-                  <p className="text-red-500 text-sm mt-1">{errors.department}</p>
+                {errors.personalemail && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
                 )}
               </div>
 
@@ -139,7 +145,7 @@ function CreateEmailEmployee() {
                 )}
               </div>
 
-              <div className="relative">
+              {/* <div className="relative">
         
                 <input
                   type={showPassword ? "text" : "password"}
@@ -158,23 +164,23 @@ function CreateEmailEmployee() {
                 {errors.defaultPassword && (
                   <p className="text-red-500 text-sm mt-1">{errors.defaultPassword}</p>
                 )}
-              </div>
+              </div> */}
               <div>
                 
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={email}
-                  placeholder="Add his current email:example@gmail.com"
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="text"
+                  id="contact_number"
+                  name="contact_number"
+                  value={contact_number}
+                  placeholder="Add his current contact_number 078945356u7"
+                  onChange={(e) => setcontact_number(e.target.value)}
                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                {errors.contact_number && (
+                  <p className="text-red-500 text-sm mt-1">{errors.contact_number}</p>
                 )}
               </div>
-              <Btn text="Send an invite" />
+              <Btn text="Send an invite" type="submit" />
              
             </form>
             <div className="col-span-2">

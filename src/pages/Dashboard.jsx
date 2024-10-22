@@ -43,8 +43,8 @@ function  Dashboard() {
         <header className="mb-4">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#264667] pb-4 sm:pb-7">
             Welcome Back, <span className="text-[#4b749d]">
-              Admin
-              {/* {user.hod_name} */}
+              
+              {user.hod_name}
               
             </span>
           </h2>
@@ -77,7 +77,7 @@ function  Dashboard() {
             <div className="w-full lg:w-1/2 bg-white p-4 sm:p-8 rounded-lg shadow-md flex items-center justify-center">
               <Piechart />
             </div>
-            <div className="w-full lg:w-1/2 bg-white p-4 sm:p-8 rounded-lg shadow-md overflow-x-auto">
+            {/* <div className="w-full lg:w-1/2 bg-white p-4 sm:p-8 rounded-lg shadow-md overflow-x-auto">
               <table className="min-w-full table-auto">
                 <thead>
                   <tr className="bg-gray-50">
@@ -111,7 +111,7 @@ function  Dashboard() {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </div> */}
           </div>
         </section>
       </div>

@@ -32,13 +32,13 @@ function Sidebar({ isOpen, toggleSidebar }) {
   return (
     <div className={`bg-[#264667] dark:bg-gray-800 transition-all duration-300 ${isOpen ? "w-64" : "w-16"} h-full fixed left-0 top-0 z-50`}>
       <div className="flex flex-col h-full">
-        {/* Logo and title */}
+        
         <div className="flex items-center justify-between p-4">
           <img src={logo} alt="AQS Logo" className={`w-10 h-10 ${isOpen ? "mr-2" : "mx-auto"}`} />
           {isOpen && <h1 className="text-xl text-white font-semibold">HOD DASHBOARD</h1>}
         </div>
 
-        {/* Menu Items */}
+        
         <nav className="flex-1 overflow-y-auto py-4 remove-scrollbar">
           <ul className="space-y-2">
             {menuItems.map((item, idx) => (
@@ -57,9 +57,9 @@ function Sidebar({ isOpen, toggleSidebar }) {
           </ul>
         </nav>
 
-        {/* Dark Mode and Signout */}
+        
         <div className="p-4">
-          {/* Dark Mode Toggle */}
+          
           <button
             onClick={toggleDarkMode}
             className={`flex items-center w-full px-4 py-2 mb-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-200 ${
@@ -70,7 +70,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
             {isOpen && <span className="ml-2">{isDarkMode ? "Light Mode" : "Dark Mode"}</span>}
           </button>
 
-          {/* Sign Out Button */}
+        
           <button
             className={`flex items-center w-full px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600 transition duration-200 ${
               isOpen ? "justify-start" : "justify-center"
