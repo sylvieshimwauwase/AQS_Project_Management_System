@@ -7,6 +7,16 @@ class loginDataService {
     signup(data) {
       return http.post("/register", data);
     }
+      
+  forgotPassword(email) {
+    return http.post("/forgot-password", { email });
+  }
+  verifyEmail(token) {
+    return http.get(`/verify-email/${token}`);
+  }
+  resetPassword(data) {
+    return http.post("/reset-password", data);
+  }
     // update(id, data) {
     //   return http.put(`/users/${id}`, data);
     // }

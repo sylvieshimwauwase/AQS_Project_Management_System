@@ -51,6 +51,10 @@ const AddMemberForm = () => {
     }
   };
 
+  const triggerFileInput = () => {
+    document.getElementById('profile-picture-input').click();
+  };
+
   return (
     <div className="flex flex-col items-center mt-10 w-full">
       <div className="w-full text-2xl sm:text-3xl font-semibold text-[#090909] pb-10 sm:pb-7">
@@ -98,7 +102,10 @@ const AddMemberForm = () => {
             Profile Picture
           </label>
           <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 bg-gray-100 border rounded-full flex items-center justify-center relative">
+            <div
+              className="w-16 h-16 bg-gray-100 border rounded-full flex items-center justify-center relative cursor-pointer"
+              onClick={triggerFileInput}
+            >
               {formData.profilePicture ? (
                 <img
                   src={URL.createObjectURL(formData.profilePicture)}
@@ -107,10 +114,7 @@ const AddMemberForm = () => {
                 />
               ) : (
                 <div className="relative w-full h-full flex items-center justify-center">
-                  
                   <FaUser className="w-8 h-8 text-gray-400" />
-                  
-                  
                   <div className="absolute bottom-0 right-0 bg-white p-1 rounded-full">
                     <FaCamera className="text-gray-500 w-4 h-4" />
                   </div>
