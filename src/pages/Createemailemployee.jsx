@@ -10,6 +10,7 @@ function CreateEmailEmployee() {
   const [contact_number, setcontact_number] = useState("");
   const [position, setPosition] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [default_password, setdefault_password] = useState(false);
   const [errors, setErrors] = useState({});
 
   const formData = {
@@ -19,6 +20,7 @@ function CreateEmailEmployee() {
     position,
     personalemail,
     contact_number,
+    default_password,
   };
 
   const handleValidation = () => {
@@ -145,15 +147,15 @@ function CreateEmailEmployee() {
                 )}
               </div>
 
-              {/* <div className="relative">
+              <div className="relative">
         
                 <input
                   type={showPassword ? "text" : "password"}
                   id="defaultPassword"
                   name="defaultPassword"
-                  value={defaultPassword}
+                  value={default_password}
                   placeholder="Enter at least 8+ characters"
-                  onChange={(e) => setDefaultPassword(e.target.value)}
+                  onChange={(e) => setdefault_password(e.target.value)}
                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                  <FaEye
@@ -162,9 +164,9 @@ function CreateEmailEmployee() {
                            />
             
                 {errors.defaultPassword && (
-                  <p className="text-red-500 text-sm mt-1">{errors.defaultPassword}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.default_password}</p>
                 )}
-              </div> */}
+              </div>
               <div>
                 
                 <input
