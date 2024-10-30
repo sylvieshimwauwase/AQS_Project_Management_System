@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import addImage from "../assets/images/addhim.jfif";
 import Btn from "../components/Btn";
 import { FaEye } from "react-icons/fa";
+import { createEmployee } from "../features/Data/EmployeeSlice";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function CreateEmailEmployee() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [personalemail , setPersonalemail] = useState("");
   const [employee_name, setEmployee_name] = useState("");
@@ -13,15 +17,7 @@ function CreateEmailEmployee() {
   const [default_password, setdefault_password] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const formData = {
-    employee_name,
-    email,
-    personalemail,
-    position,
-    personalemail,
-    contact_number,
-    default_password,
-  };
+
 
   const handleValidation = () => {
     let errors = {};
@@ -55,13 +51,34 @@ function CreateEmailEmployee() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (handleValidation()) {
-      console.log(formData);
+      const formData = {
+        employee_name, 
+        email,
+        personalemail,
+        position,
+        default_password,
+        contact_number,
+        
+      };
+
+      try {
+        await dispatch(createEmployee(formData));
+      } catch (error) {
+        if (error.isAxiosError) {
+          console.error("Axios Error: ", error.toJSON()); 
+        } else {
+          console.error("Unexpected Error: ", error);
+        }
+      }
+      // console.log(formData);
     
   }
   };
+
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center py-10 ">
@@ -71,7 +88,7 @@ function CreateEmailEmployee() {
         <h2 className="text-1xl  font-semibold text-gray-700 ">
             Add an Employee 
             </h2>
-            <div><svg xmlns="http://www.w3.org/2000/svg" fill="current"  stroke-width="1.5" stroke="white" class="size-6">
+            <div><svg xmlns="http://www.w3.org/2000/svg" fill="current"  stroke-width="1.5" stroke="white" className="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 </svg></div>
           

@@ -3,33 +3,33 @@ import './Sidebare.css';
 function EmployeeSidebare() {
   return (
     <div>
-        <div class="sidebar">
-  {/* <div class="sidebar-header"> */}
-    {/* <button class="menu-btn">
+        <div className="sidebar">
+  {/* <div className="sidebar-header"> */}
+    {/* <button className="menu-btn">
       &#9776;
     </button>
-    <img src="logo.png" alt="AQS Logo" class="logo" />
+    <img src="logo.png" alt="AQS Logo" className="logo" />
   </div> */}
-  <div class="profile-section">
-    <div class="profile-pic">
+  <div className="profile-section">
+    <div className="profile-pic">
       <img src="profile-pic.png" alt="Profile" />
     </div>
-    <p class="employee-name">Name of Employee</p>
+    <p className="employee-name">Name of Employee</p>
   </div>
-  <nav class="nav-links">
-    <a href="#" class="nav-item">
-      <span class="nav-icon">📊</span>
+  <nav className="nav-links">
+    <a href="#" className="nav-item">
+      <span className="nav-icon">📊</span>
       Dashboard
     </a>
-    <a href="#" class="nav-item">
-      <span class="nav-icon">📄</span>
+    <a href="#" className="nav-item">
+      <span className="nav-icon">📄</span>
       Projects
     </a>
-    <a href="#" class="nav-item">
-      <span class="nav-icon">🔔</span>
+    <a href="#" className="nav-item">
+      <span className="nav-icon">🔔</span>
       Notifications
     </a>
-    <a href="#" class="sign-out">Sign out</a>
+    <a href="#" className="sign-out">Sign out</a>
     <br>
     </br>
     <br>
