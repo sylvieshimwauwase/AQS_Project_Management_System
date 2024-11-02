@@ -29,19 +29,19 @@ const EmployeeDashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <div className="bg-blue-800 text-white p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold">To do</h2>
-          <p className="text-lg">{projectData.toDo} Projects</p>
+          {/* <p className="text-lg">{projectData.toDo} Projects</p> */}
         </div>
         <div className="bg-blue-600 text-white p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold">In Progress</h2>
-          <p className="text-lg">{projectData.inProgress} Projects</p>
+          {/* <p className="text-lg">{projectData.inProgress} Projects</p> */}
         </div>
         <div className="bg-green-600 text-white p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold">Done</h2>
-          <p className="text-lg">{projectData.done} Projects</p>
+          {/* <p className="text-lg">{projectData.done} Projects</p> */}
         </div>
         <div className="bg-red-600 text-white p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold">Overdue</h2>
-          <p className="text-lg">{projectData.overdue} Projects</p>
+          {/* <p className="text-lg">{projectData.overdue} Projects</p> */}
         </div>
       </div>
 

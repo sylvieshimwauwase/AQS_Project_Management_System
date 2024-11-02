@@ -19,7 +19,9 @@ import Messages from "./pages/Messages";
 import Schedule from "./pages/Schedule";
 import Reports from "./pages/Reports";
 import ProtectedRoute from "./ProtectedRoute";
-import Changepaswordemp from "./pages/Changepaswordemp";
+import EmployeeDashboard from "./pages/EmployeeDashboard";
+import ChangePasswordEmp from "./pages/Changepaswordemp";
+import Employeenotification from "./pages/Employeenotification";
 
 function App() {
   return (
@@ -31,9 +33,12 @@ function App() {
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/createNewPassword" element={<CreateNewPassword />} />
-        {/* <Route path="/change-password" element={<ChangePasswordEmp />} /> */}
+        <Route path="/change-password" element={<ChangePasswordEmp />} />
 
 
+        
+
+        
         <Route
           path="/dashboard"
           element={
@@ -53,7 +58,10 @@ function App() {
             element={<Createemailemployee />}
           />
           <Route path="/dashboard/addmember" element={<Addmember />} />
-          
+
+          {/* Add other routes here */}
+          <Route path="/dashboard/employeeDash" element={<EmployeeDashboard/>} />
+          <Route path="/dashboard/notification" element={<Employeenotification/>} />
         </Route>
       </Routes>
       <ToastContainer />

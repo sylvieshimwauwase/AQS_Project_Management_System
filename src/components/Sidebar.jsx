@@ -37,6 +37,15 @@ function Sidebar({ isOpen, toggleSidebar }) {
     { path: "/dashboard/reports", icon: FaRegFileAlt, label: "Reports" },
   ];
 
+  const employeeItems = [
+    { path: "/employeed", icon: FaHome, label: "Dashboard" },
+    // { path: "/dashboard/employee", icon: FaUsers, label: "Employee" },
+    // { path: "/dashboard/projects", icon: FaPoll, label: "Projects" },
+    // { path: "/dashboard/messages", icon: FaRegEnvelope, label: "Messages" },
+    // { path: "/dashboard/schedule", icon: FaCalendar, label: "Schedule" },
+    // { path: "/dashboard/reports", icon: FaRegFileAlt, label: "Reports" },
+  ];
+
   return (
     <div className={`bg-[#264667] dark:bg-gray-800 transition-all duration-300 ${isOpen ? "w-64" : "w-16"} h-full fixed left-0 top-0 z-50`}>
       <div className="flex flex-col h-full">
