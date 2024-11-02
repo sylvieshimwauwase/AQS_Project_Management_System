@@ -13,13 +13,13 @@ function SplashPage() {
                src={logo}
                alt="AQS Logo"
                className="w-100 h-80 mx-auto"
-               initial={{ scale: 1.7}}
+               initial={{ scale: 1.7 }}
                animate={{ scale: 1 }}
                transition={{ duration: 0.5 }}
                whileHover={{ scale: 1.7 }}
                whileTap={{ scale: 0.9 }}
                onClick={() => navigate("/login")}
-               />
+            />
          </div>
       </div>
    );

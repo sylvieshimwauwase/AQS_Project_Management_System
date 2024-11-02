@@ -19,6 +19,7 @@ import Messages from "./pages/Messages";
 import Schedule from "./pages/Schedule";
 import Reports from "./pages/Reports";
 import ProtectedRoute from "./ProtectedRoute";
+import Changepaswordemp from "./pages/Changepaswordemp";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/createNewPassword" element={<CreateNewPassword />} />
+        {/* <Route path="/change-password" element={<ChangePasswordEmp />} /> */}
+
 
         <Route
           path="/dashboard"
@@ -50,6 +53,7 @@ function App() {
             element={<Createemailemployee />}
           />
           <Route path="/dashboard/addmember" element={<Addmember />} />
+          
         </Route>
       </Routes>
       <ToastContainer />
