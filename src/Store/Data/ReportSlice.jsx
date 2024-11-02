@@ -1,12 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
- 
-  reportService,
- 
-} from "../../Service/DataServices";
-
-
-
+import { showToast } from "../../utils/toastConfig";
+import { reportService } from "../../Service/DataServices";
 
 // --- Report Slice CRUD Operations ---
 export const fetchReports = createAsyncThunk(
@@ -26,8 +20,10 @@ export const createReport = createAsyncThunk(
   async (reportData, { rejectWithValue }) => {
     try {
       const response = await reportService.register(reportData);
+      showToast(response.data.message, "success");
       return response.data;
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -40,6 +36,7 @@ export const updateReport = createAsyncThunk(
       const response = await reportService.update(reportId, data);
       return { reportId, data: response.data };
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -52,6 +49,7 @@ export const deleteReport = createAsyncThunk(
       await reportService.delete(reportId);
       return reportId;
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -94,9 +92,6 @@ const reportSlice = createSlice({
   },
 });
 
-
-
 // Export reportSlice
 
 export const reportReducer = reportSlice.reducer;
-

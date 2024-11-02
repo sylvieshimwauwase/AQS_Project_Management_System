@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { FaLock, FaEye, FaEnvelope } from "react-icons/fa";
 import groupImage from "../assets/images/Group.jfif";
 import Button from "../components/Button";
 import Google from "../assets/images/Vector.png";
 import Facebook from "../assets/images/Logo facebook.png";
-import { Link, useNavigate } from "react-router-dom";
-import { FaLock, FaEye, FaEnvelope } from "react-icons/fa";
 import {
   makeLogin,
-  selectLogin,
+  selectCurrentUser,
   selectLoginLoading,
   selectLoginError,
-} from "../features/Auth/AuthSlice";
+} from "../Store/Auth/AuthSlice";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -21,13 +21,12 @@ function Login() {
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector(selectLogin);
+  const user = useSelector(selectCurrentUser);
   const loading = useSelector(selectLoginLoading);
   const loginError = useSelector(selectLoginError);
 
   useEffect(() => {
     if (user) {
-      
       navigate("/dashboard");
     }
   }, [user, navigate]);
@@ -57,7 +56,6 @@ function Login() {
     setSubmitted(true);
 
     if (handleValidation()) {
-      
       dispatch(makeLogin({ email, password }));
     }
   };
@@ -66,7 +64,7 @@ function Login() {
     setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
-  return !user ? ( 
+  return !user ? (
     <div className="min-h-screen flex items-center justify-center py-10">
       <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden max-w-6xl w-full">
         <div className="w-[50vw] bg-[#264667] flex flex-col items-center justify-center text-white px-8">

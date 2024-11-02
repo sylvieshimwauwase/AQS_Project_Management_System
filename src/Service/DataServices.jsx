@@ -1,4 +1,4 @@
-import http from "../AxiosInstint";
+import http from "../api/AxiosInstint";
 
 
 class EmployeeService {

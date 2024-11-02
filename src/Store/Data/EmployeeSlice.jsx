@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  employeeService,
- 
-} from "../../Service/DataServices";
+import { showToast } from "../../utils/toastConfig";
+import { employeeService } from "../../Service/DataServices";
 
 // --- Employee Slice CRUD Operations ---
 export const fetchEmployees = createAsyncThunk(
@@ -22,9 +20,10 @@ export const createEmployee = createAsyncThunk(
   async (employeeData, { rejectWithValue }) => {
     try {
       const response = await employeeService.register(employeeData);
+      showToast(response.data.message, "success");
       return response.data;
     } catch (error) {
-      console.log(error);
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -72,28 +71,24 @@ const employeeSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(createEmployee.fulfilled, (state, action) => {
-        state.list.push(action.payload); // Add new employee to the list
-      })
-      // .addCase(updateEmployee.fulfilled, (state, action) => {
-      //   const { employeeId, data } = action.payload;
-      //   const existingEmployee = state.list.find(
-      //     (employee) => employee.id === employeeId
-      //   );
-      //   if (existingEmployee) {
-      //     Object.assign(existingEmployee, data); // Update employee data in the list
-      //   }
-      // })
-      // .addCase(deleteEmployee.fulfilled, (state, action) => {
-      //   state.list = state.list.filter(
-      //     (employee) => employee.id !== action.payload
-      //   );
-      // });
+        state.list.push(action.payload);
+      });
+    // .addCase(updateEmployee.fulfilled, (state, action) => {
+    //   const { employeeId, data } = action.payload;
+    //   const existingEmployee = state.list.find(
+    //     (employee) => employee.id === employeeId
+    //   );
+    //   if (existingEmployee) {
+    //     Object.assign(existingEmployee, data); // Update employee data in the list
+    //   }
+    // })
+    // .addCase(deleteEmployee.fulfilled, (state, action) => {
+    //   state.list = state.list.filter(
+    //     (employee) => employee.id !== action.payload
+    //   );
+    // });
   },
 });
 
-
-
-
 // Export all slices
 export const employeeReducer = employeeSlice.reducer;
-
