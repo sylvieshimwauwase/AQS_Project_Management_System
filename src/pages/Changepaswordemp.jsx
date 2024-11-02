@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import addImage from "../assets/images/addhim.jfif"; // Make sure this image path is correct
 import Btn from "../components/Btn"; // Assuming Btn is a button component in components folder
 import { createEmployee } from "../Store/Data/EmployeeSlice";
-import { selectCurrentUser } from "../Store/Auth/authSlice";
+import { selectCurrentUser } from "../Store/Auth/AuthSlice";
 
 function ChangePasswordEmp() {
   const dispatch = useDispatch();

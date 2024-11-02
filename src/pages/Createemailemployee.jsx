@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import addImage from "../assets/images/addhim.jfif";
 import Btn from "../components/Btn";
 import { createEmployee } from "../Store/Data/EmployeeSlice";
-import { selectCurrentUser } from "../Store/Auth/authSlice";
+import { selectCurrentUser } from "../Store/Auth/AuthSlice";
 
 function CreateEmailEmployee() {
   const dispatch = useDispatch();

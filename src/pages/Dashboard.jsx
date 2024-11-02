@@ -5,7 +5,7 @@ import CalendarComponent from "../components/Calender";
 import LineChart from "../components/Linechart";
 import Piechart from "../components/Piechart";
 import ProgressBar from "../components/Progressbar";
-import { selectCurrentUser } from "../Store/Auth/authSlice";
+import { selectCurrentUser } from "../Store/Auth/AuthSlice";
 
 const projectData = [
   {
