@@ -6,7 +6,7 @@ import Signup from './pages/Signup';
 import ResetPassword from './pages/ResetPassword';
 import VerifyCode from './pages/VerifyCode';
 import CreateNewPassword from './pages/PasswordSetup';
-import Createemailemployee from './pages/createemailemployee';
+import CreateEmailEmployee from './pages/createemailemployee';
 import Addmember from './pages/Addmember';
 import Dashboard from './pages/Dashboard';
 import Employee from './pages/Employee';
@@ -28,7 +28,7 @@ function App() {
             <Route path='/resetPassword' element={<ResetPassword />} />
             <Route path='/verifyCode' element={<VerifyCode />} />
             <Route path='/createNewPassword' element={<CreateNewPassword />} />
-            <Route path='/createemailemployee' element={<Createemailemployee/>} />
+            <Route path='/createemailemployee' element={<CreateEmailEmployee/>} />
             <Route path='/addmember' element={<Addmember/>} />
         
 
