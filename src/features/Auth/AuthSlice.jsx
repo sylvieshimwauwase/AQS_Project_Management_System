@@ -54,6 +54,24 @@ export const signup = createAsyncThunk(
     }
   }
 );
+
+export const forgotPassword = createAsyncThunk(
+  'auth/forgot-password',
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = await loginService.forgotPassword(email); 
+      return response.data.message; 
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.error || "Failed to send password reset email"
+      );
+    }
+  }
+);
+
+// export const resetPassword = createAsyncThunk(
+//   'auth/resetPassword',
+//   async (data, { rejectWithValue }) => {
 export const loginSlice = createSlice({
   name: "login",
   initialState,
@@ -86,7 +104,20 @@ export const loginSlice = createSlice({
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      .addCase(forgotPassword.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(forgotPassword.fulfilled, (state, action) => {
+        state.loading = false;
+        state.message = action.payload; // Store the success message
+      })
+      .addCase(forgotPassword.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
+
   },
 });
 

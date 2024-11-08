@@ -6,8 +6,8 @@ const Memberlist = ({ employees }) => {
 
   return (
     <div className="p-4">
-      <h2 className="text-lg font-semibold">Members in a team</h2>
-      <table className="table-auto w-full text-left">
+      <h2 className="text-center font-bold p-5 mr-10 mt-8">Members in a team</h2>
+      <table className="table-auto w-full bg-white h-10 shadow-slate-300 text-center">
         <thead>
           <tr>
             <th>No</th>
@@ -15,6 +15,7 @@ const Memberlist = ({ employees }) => {
             <th>Full Name</th>
             <th>Gender</th>
             <th>Nationality</th>
+            <th>Phone Number</th>
             <th>Team</th>
           </tr>
         </thead>
@@ -26,14 +27,15 @@ const Memberlist = ({ employees }) => {
               <td>{emp.fullname}</td>
               <td>{emp.gender}</td>
               <td>{emp.nationality}</td>
+              <td>{emp.phonenumber}</td>
               <td>{emp.team}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <h2 className="text-lg font-semibold mt-8">Members not in a team</h2>
-      <table className="table-auto w-full text-left">
+      <h2 className="text-center font-bold p-5 mr-10 mt-8">Members not in a team</h2>
+      <table className="table-auto w-full  bg-white h-10 shadow-slate-300 text-center">
         <thead>
           <tr>
             <th>No</th>
@@ -41,6 +43,8 @@ const Memberlist = ({ employees }) => {
             <th>Full Name</th>
             <th>Gender</th>
             <th>Nationality</th>
+            <th>Phone Number</th>
+            <th>Team</th>
           </tr>
         </thead>
         <tbody>
@@ -51,6 +55,8 @@ const Memberlist = ({ employees }) => {
               <td>{emp.fullname}</td>
               <td>{emp.gender}</td>
               <td>{emp.nationality}</td>
+              <td>{emp.phonenumber}</td>
+              <td>{emp.team}</td>
             </tr>
           ))}
         </tbody>

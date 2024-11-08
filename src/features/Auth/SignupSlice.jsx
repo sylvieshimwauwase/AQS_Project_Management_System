@@ -6,9 +6,9 @@ export const signupUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await loginService.signup(userData);
-      return response.data; // Assuming the API returns the user data or a success message
+      return response.data; 
     } catch (error) {
-      return rejectWithValue(error.response.data); // Handle error response
+      return rejectWithValue(error.response.data); 
     }
   }
 );
@@ -34,11 +34,11 @@ const signupSlice = createSlice({
       })
       .addCase(signupUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload; // Store user data if needed
+        state.user = action.payload; 
       })
       .addCase(signupUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload; // Handle error message
+        state.error = action.payload; 
       });
   },
 });
