@@ -12,7 +12,7 @@ import {
   signup,
   selectLoginLoading,
   selectLoginError,
-} from "../features/Auth/AuthSlice"; 
+} from "../Store/Auth/AuthSlice"; 
 
 function Signup() {
   const dispatch = useDispatch();

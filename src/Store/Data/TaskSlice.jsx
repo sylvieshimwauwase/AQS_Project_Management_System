@@ -1,13 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-
-  taskService,
-  
-} from "../../Service/DataServices";
-
-
-
-
+import { showToast } from "../../utils/toastConfig";
+import { taskService } from "../../Service/DataServices";
 
 // --- Task Slice CRUD Operations ---
 export const fetchTasks = createAsyncThunk(
@@ -27,8 +20,10 @@ export const createTask = createAsyncThunk(
   async (taskData, { rejectWithValue }) => {
     try {
       const response = await taskService.register(taskData);
+      showToast(response.data.message, "success");
       return response.data;
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -39,8 +34,10 @@ export const updateTask = createAsyncThunk(
   async ({ taskId, data }, { rejectWithValue }) => {
     try {
       const response = await taskService.update(taskId, data);
+      showToast(response.data.message, "success");
       return { taskId, data: response.data };
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -53,6 +50,7 @@ export const deleteTask = createAsyncThunk(
       await taskService.delete(taskId);
       return taskId;
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -91,9 +89,5 @@ const taskSlice = createSlice({
   },
 });
 
-
-
-
 // Export taskSlice
 export const taskReducer = taskSlice.reducer;
-

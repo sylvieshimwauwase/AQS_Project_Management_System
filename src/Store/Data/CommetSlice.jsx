@@ -1,10 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  
-  commentService,
-} from "../../Service/DataServices";
-
-
+import { showToast } from "../../utils/toastConfig";
+import { commentService } from "../../Service/DataServices";
 
 // --- Comment Slice CRUD Operations ---
 export const fetchComments = createAsyncThunk(
@@ -24,8 +20,10 @@ export const createComment = createAsyncThunk(
   async ({ taskId, commentData }, { rejectWithValue }) => {
     try {
       const response = await commentService.register(taskId, commentData);
+      showToast(response.data.message, "success");
       return response.data;
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -36,8 +34,10 @@ export const updateComment = createAsyncThunk(
   async ({ commentId, data }, { rejectWithValue }) => {
     try {
       const response = await commentService.update(commentId, data);
+      showToast(response.data.message, "success");
       return { commentId, data: response.data };
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -50,6 +50,7 @@ export const deleteComment = createAsyncThunk(
       await commentService.delete(commentId);
       return commentId;
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
@@ -91,8 +92,6 @@ const commentSlice = createSlice({
       });
   },
 });
-
-
 
 // Export commentSlice reducer
 export const commentReducer = commentSlice.reducer;

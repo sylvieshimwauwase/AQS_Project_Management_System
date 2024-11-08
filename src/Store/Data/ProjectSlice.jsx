@@ -1,16 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  
-  projectService,
-  
-} from "../../Service/DataServices";
+import { showToast } from "../../utils/toastConfig";
+import { projectService } from "../../Service/DataServices";
 
 // --- Employee Slice CRUD Operations ---
-export const fetchEmployees = createAsyncThunk(
-  "employees/fetchAll",
+export const fetchProjects = createAsyncThunk(
+  "projects/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await employeeService.fetchAll();
+      const response = await projectService.fetchAll();
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -18,24 +15,32 @@ export const fetchEmployees = createAsyncThunk(
   }
 );
 
-export const createEmployee = createAsyncThunk(
-  "employees/create",
+export const createProject = createAsyncThunk(
+  "projects/create",
   async (employeeData, { rejectWithValue }) => {
     try {
-      const response = await employeeService.register(employeeData);
+      const response = await projectService.register(employeeData);
+      showToast(response.data.message, "success");
       return response.data;
     } catch (error) {
+      showToast(error.response.data.message, "error");
       return rejectWithValue(error.response.data);
     }
   }
 );
 
-
-
-
-
-
-
+export const deleteProject = createAsyncThunk(
+  "projects/delete",
+  async (projectId, { rejectWithValue }) => {
+    try {
+      await projectService.delete(projectId);
+      return projectId;
+    } catch (error) {
+      showToast(error.response.data.message, "error");
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 const projectSlice = createSlice({
   name: "projects",
@@ -73,8 +78,6 @@ const projectSlice = createSlice({
       });
   },
 });
-
-
 
 // Export all slices
 
