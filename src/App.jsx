@@ -6,7 +6,7 @@ import Signup from './pages/Signup';
 import ResetPassword from './pages/ResetPassword';
 import VerifyCode from './pages/VerifyCode';
 import CreateNewPassword from './pages/PasswordSetup';
-import Createemailemployee from './pages/createemailemployee';
+import CreateEmailEmployee from './pages/createemailemployee';
 import Addmember from './pages/Addmember';
 import Dashboard from './pages/Dashboard';
 import Employee from './pages/Employee';
@@ -16,9 +16,7 @@ import Messages from './pages/Messages';
 import Schedule from './pages/Schedule';
 import Reports from './pages/Reports';
 
- 
 function App() {
-
    return (
       <BrowserRouter>
          <Routes>
@@ -28,22 +26,40 @@ function App() {
             <Route path='/resetPassword' element={<ResetPassword />} />
             <Route path='/verifyCode' element={<VerifyCode />} />
             <Route path='/createNewPassword' element={<CreateNewPassword />} />
-            <Route path='/createemailemployee' element={<Createemailemployee/>} />
+            <Route path='/createemailemployee' element={<CreateEmailEmployee/>} />
             <Route path='/addmember' element={<Addmember/>} />
+
         
 
-            <Route path='/dashboard' element={<DashboardLayout />}> 
-               <Route index element={<Dashboard />} />
-               <Route path='/dashboard/employee' element={<Employee />} />
-               <Route path='/dashboard/projects' element={<Projects />} />
-               <Route path='/dashboard/messages' element={<Messages />} />
-               <Route path='/dashboard/schedule' element={<Schedule />} />
-               <Route path='/dashboard/reports' element={<Reports />} />
-            </Route>
-         </Routes>
-  
-      </BrowserRouter>
-   );
+        
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="/dashboard/employee" element={<Employee />} />
+          <Route path="/dashboard/projects" element={<Projects />} />
+          <Route path="/dashboard/messages" element={<Messages />} />
+          <Route path="/dashboard/schedule" element={<Schedule />} />
+          <Route path="/dashboard/reports" element={<Reports />} />
+          <Route
+            path="/dashboard/createemailemployee"
+            element={<Createemailemployee />}
+          />
+          <Route path="/dashboard/addmember" element={<Addmember />} />
+
+          {/* Add other routes here */}
+          <Route path="/dashboard/employeeDash" element={<EmployeeDashboard/>} />
+          <Route path="/dashboard/notification" element={<Employeenotification/>} />
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </BrowserRouter>
+  );
 }
 
 export default App;
