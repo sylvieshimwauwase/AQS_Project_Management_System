@@ -11,6 +11,7 @@ const AddMemberForm = () => {
     email: "",
     gender: "",
     profilePicture: null,
+    team: ""
   });
 
   const [isTitleDropdownOpen, setIsTitleDropdownOpen] = useState(false);
@@ -96,7 +97,6 @@ const AddMemberForm = () => {
           </div>
         )}
 
-        
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Profile Picture
@@ -215,6 +215,24 @@ const AddMemberForm = () => {
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
+            </select>
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Team
+            </label>
+            <select
+              name="team"
+              value={formData.team}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+              required
+            >
+              <option value="">Select Team</option>
+              <option value="Development">Development</option>
+              <option value="Design">Design</option>
+              <option value="Data Science">Data Science</option>
             </select>
           </div>
         </div>

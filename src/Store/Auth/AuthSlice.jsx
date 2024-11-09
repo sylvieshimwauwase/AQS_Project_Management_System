@@ -11,6 +11,7 @@ const initialState = {
     : null,
   loading: false,
   error: null,
+  position: null,
 };
 
 // Async thunk for user login
@@ -22,11 +23,12 @@ export const makeLogin = createAsyncThunk(
       if (response) {
         const { token } = response.data.authorization;
         const user = response.data.user;
+        const status = response.data.status;
 
         // Store user data and token in localStorage
         localStorage.setItem("token", token);
         localStorage.setItem("user_data", JSON.stringify(user));
-        return { ...user, token };
+        return { ...user, token, status };
       }
     } catch (error) {
       return rejectWithValue(
@@ -101,16 +103,21 @@ export const loginSlice = createSlice({
       .addCase(makeLogin.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.position = null; 
       })
       .addCase(makeLogin.fulfilled, (state, action) => {
         state.loading = false;
         state.userData = action.payload; // Only update userData
+        const status = action.payload.status;
+        state.position =  status.includes('Employee')? "Employee" : "hod";
         showToast("Logged in successfully!", "success");
       })
       .addCase(makeLogin.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        state.position = null;
         showToast(action.payload, "error");
+
       })
       .addCase(signup.pending, (state) => {
         state.loading = true;
@@ -162,6 +169,6 @@ export const selectLogin = (state) => state.login.userData;
 export const selectSignup = (state) => state.login.users; // This can be removed if not used
 export const selectLoginError = (state) => state.login.error;
 export const selectLoginLoading = (state) => state.login.loading;
-
+export const selectPosition = (state) => state.login.position;
 // Export the reducer
 export default loginSlice.reducer;
