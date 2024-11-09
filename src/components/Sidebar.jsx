@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaCalendar, FaHome, FaPoll, FaRegEnvelope, FaRegFileAlt, FaUsers, FaSignOutAlt } from "react-icons/fa";
 import logo from "../assets/images/download.png";
+import { useSelector } from "react-redux";
+import { selectPosition } from "../Store/Auth/AuthSlice";
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -10,7 +12,8 @@ function Sidebar({ isOpen, toggleSidebar }) {
     return savedMode === "true"; 
   });
   const location = useLocation();
-
+const position = useSelector(selectPosition);
+console.log(position);
   
   useEffect(() => {
     const root = window.document.documentElement;
@@ -38,13 +41,12 @@ function Sidebar({ isOpen, toggleSidebar }) {
   ];
 
   const employeeItems = [
-    { path: "/employeed", icon: FaHome, label: "Dashboard" },
-    // { path: "/dashboard/employee", icon: FaUsers, label: "Employee" },
-    // { path: "/dashboard/projects", icon: FaPoll, label: "Projects" },
-    // { path: "/dashboard/messages", icon: FaRegEnvelope, label: "Messages" },
-    // { path: "/dashboard/schedule", icon: FaCalendar, label: "Schedule" },
-    // { path: "/dashboard/reports", icon: FaRegFileAlt, label: "Reports" },
+    { path: "/dashboard/employeeDash", icon: FaHome, label: "Dashboard" },
+    { path: "/dashboard/employeeproject", icon: FaUsers, label: "Empnot" },
+    { path: "/dashboard/projects", icon: FaPoll, label: "Projects" },
+  
   ];
+  const itemsToRender = position === "Employee" ? employeeItems : menuItems;
 
   return (
     <div className={`bg-[#264667] dark:bg-gray-800 transition-all duration-300 ${isOpen ? "w-64" : "w-16"} h-full fixed left-0 top-0 z-50`}>
@@ -57,7 +59,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
         <nav className="flex-1 overflow-y-auto py-4 remove-scrollbar">
           <ul className="space-y-2">
-            {menuItems.map((item, idx) => (
+            {itemsToRender.map((item, idx) => (
               <li key={idx}>
                 <Link
                   to={item.path}
